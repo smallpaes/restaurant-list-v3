@@ -1,8 +1,14 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const exphbs = require('express-handlebars')
 
 const port = 3000
+
+// define handlebars using
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+// tell express that all templates ahead will be handlebars 
+app.set('view engine', 'handlebars')
 
 // set up mongoose connection to MongoDB
 mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
@@ -24,7 +30,7 @@ db.once('open', () => {
 const Restaurant = require('./models/restaurant')
 
 app.get('/', (req, res) => {
-  res.send('Landing Page')
+  res.render('index')
 })
 
 app.listen(port, () => {
