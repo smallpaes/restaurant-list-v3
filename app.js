@@ -32,8 +32,13 @@ const Restaurant = require('./models/restaurant')
 // use built-in middleware static() to serve static files
 app.use(express.static('public'))
 
+// landing page
 app.get('/', (req, res) => {
-  res.render('index')
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurants })
+  })
+
 })
 
 app.listen(port, () => {
