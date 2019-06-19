@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
+const bodyParser = require('body-parser')
 
 const port = 3000
 
@@ -29,6 +30,9 @@ db.once('open', () => {
 // include restaurant model
 const Restaurant = require('./models/restaurant')
 
+// express takes all request body and parse it into JS object
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // use built-in middleware static() to serve static files
 app.use(express.static('public'))
 
@@ -38,7 +42,14 @@ app.get('/', (req, res) => {
     if (err) return console.error(err)
     return res.render('index', { restaurants })
   })
+})
 
+// detail page
+app.get('/restaurants/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurants) => {
+    if (err) return console.error(err)
+    return res.render('detail', { restaurants })
+  })
 })
 
 app.listen(port, () => {
