@@ -29,6 +29,9 @@ db.once('open', () => {
 // include restaurant model
 const Restaurant = require('./models/restaurant')
 
+// use built-in middleware static() to serve static files
+app.use(express.static('public'))
+
 app.get('/', (req, res) => {
   res.render('index')
 })
