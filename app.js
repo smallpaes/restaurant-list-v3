@@ -118,7 +118,7 @@ app.get('/search', (req, res) => {
   const updatedInput = req.query.keyword.replace(/\W/g, replacer)
   // Define regular expression 
   const regex = new RegExp(updatedInput, 'i')
-  Restaurant.find({ name: regex }, (err, restaurants) => {
+  Restaurant.find({ $or: [{ name: regex }, { category: regex }] }, (err, restaurants) => {
     if (err) return console.error(err)
     return res.render('index', { restaurants })
   })
