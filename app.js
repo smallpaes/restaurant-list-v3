@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 
 const port = 3000
 
+// Register ExpressHandlebars instance-level helpers
+const hbs = exphbs.create({ helpers: {} })
 // define handlebars using
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 // tell express that all templates ahead will be handlebars 
@@ -58,6 +60,40 @@ app.post('/restaurants/new', (req, res) => {
   restaurant.save(err => {
     if (err) return console.error(err)
     return res.redirect('/')
+  })
+})
+
+// edit page
+app.get('/restaurants/:id/edit', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err)
+    return res.render('edit', {
+      // Specify a helper for this rendering: add selected to selected category
+      restaurant, helpers: { [restaurant.category]() { return 'selected' } }
+    })
+  })
+})
+
+// Submit edit
+app.post('/restaurants/:id', (req, res) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    console.log(restaurant)
+    if (err) return console.error(err)
+    // update data
+    restaurant.name = req.body.name
+    restaurant.name_en = req.body.name_en
+    restaurant.category = req.body.category
+    restaurant.image = req.body.image
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.google_map = req.body.google_map
+    restaurant.rating = req.body.rating
+    // save data back to database
+    restaurant.save(err => {
+      if (err) return console.error(err)
+      // redirect back to detail page
+      return res.redirect(`/restaurants/${req.params.id}`)
+    })
   })
 })
 
