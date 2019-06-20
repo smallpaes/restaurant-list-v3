@@ -104,11 +104,25 @@ app.post('/restaurants/:id/delete', (req, res) => {
     // remove the restaurant from database
     restaurant.remove(err => {
       if (err) return console.error(err)
-      // redirect back to landing page
+      // redirect back to landing page 
       return res.redirect('/')
     })
   })
 })
+
+// searching restaurant
+app.get('/search', (req, res) => {
+  // Escaping special character
+  function replacer(match) { return `\\${match}` }
+  const updatedInput = req.query.keyword.replace(/\W/g, replacer)
+  // Define regular expression 
+  const regex = new RegExp(updatedInput, 'i')
+  Restaurant.find({ name: regex }, (err, restaurants) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurants })
+  })
+})
+
 
 // detail page
 app.get('/restaurants/:id', (req, res) => {
