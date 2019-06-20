@@ -1,6 +1,6 @@
-header {
+/* header {
   overflow: hidden;
-}
+} */
 
 .navbar .navbar-brand {
   color: #4592af;
@@ -17,6 +17,7 @@ header {
   height: 360px;
   background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
   background-size: cover;
+  background-attachment: fixed;
   filter: blur(3px);
 }
 
@@ -54,8 +55,9 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card img{
-  height: 180px;
+.card-img-top{
+  max-height: 300px;
+  overflow-y: hidden;
 }
 
 .card-title{
@@ -64,38 +66,105 @@ header {
   white-space:nowrap;
 }
 
+.card-footer {
+  background-color: white;
+}
+
+.card-footer .btn {
+  color: gray;
+}
+
+.card-footer .btn:hover {
+  color: #dc3545;
+}
+
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: none;
+}
+
 .restaurant-category {
   color: #666666;
   font-size: 0.8rem;
 }
 
-.restaurant-show-title {
-  position: relative;
-  top: -100px;
-  color: white;
+.banner-title {
+  margin-top: 56px;
+  height: 360px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.banner-title h1 {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  width: 100%;
   text-align: center;
+  transform: translateY(-50%);
+  color: white;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
-@media screen and (max-width: 992px) {
+.detail-btn .btn {
+  border-radius: 0;
+  padding: 6px 35px;
+  margin-right: 8px;
+}
+
+.detail-img img,
+.card-img-top img {
+  opacity: .8;
+}
+
+.detail-img img:hover,
+a.card-link:hover .card-img-top img {
+  opacity: 1;
+  transition: all .2s linear;
+}
+
+@media screen and (min-width: 576px) {
   
-  .card img{
-    height: 115px;
+  .card-img-top{
+    max-height: 158px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   
-  .restaurant-show-title {
-    font-size: 2rem;
+  .card-img-top{
+    max-height: 138px;
+  }
+
+  .banner-title h1 {
+    font-size: 3.5rem;
+  }
+
+}
+
+@media screen and (min-width: 960px) {
+  
+  .card-img-top{
+    max-height: 191px;
+  }
+
+  .banner-title h1 {
+    font-size: 4rem;
   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (min-width: 1200px) {
   
-  .card img{
-    height: auto;
+  .card-img-top{
+    max-height: 168px;
   }
-  
+
+  .banner-title h1 {
+    font-size: 4.5rem;
+  }
 }

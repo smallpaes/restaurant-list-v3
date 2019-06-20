@@ -1,3 +1,8 @@
+<!-- banner title -->
+<div class="banner-title">
+  <h1 class="mb-1">{{restaurant.name}}</h1>
+</div>
+
 <div class="container my-5">
   <form action="/restaurants/{{restaurant.id}}" method="POST">
     <div class="form-row">
@@ -32,18 +37,18 @@
         <label for="category">餐廳類別</label>
         <select id="category" name="category" class="form-control" required>
           <option value="">Choose...</option>
-          <option value="中東料理" {{中東料理}}>中東料理</option>
-          <option value="日本料理" {{日本料理}}>日本料理</option>
-          <option value="義式餐廳" {{義式餐廳}}>義式餐廳</option>
-          <option value="美式" {{美式}}>美式</option>
-          <option value="法式料理" {{法式料理}}>法式料理</option>
-          <option value="韓式料理" {{韓式料理}}>韓式料理</option>
-          <option value="中式料理" {{中式料理}}>中式料理</option>
-          <option value="港式料理" {{港式料理}}>港式料理</option>
-          <option value="主題餐廳" {{主題餐廳}}>主題餐廳</option>
-          <option value="酒吧" {{酒吧}}>酒吧</option>
-          <option value="咖啡" {{咖啡}}>咖啡</option>
-          <option value="其他" {{其他}}>其他</option>
+          <option value="中東料理" {{isSelected restaurant.category '中東料理'}}>中東料理</option>
+          <option value="日本料理" {{isSelected restaurant.category '日本料理'}}>日本料理</option>
+          <option value="義式餐廳" {{isSelected restaurant.category '義式餐廳'}}>義式餐廳</option>
+          <option value="美式" {{isSelected restaurant.category '美式'}}>美式</option>
+          <option value="法式料理" {{isSelected restaurant.category '法式料理'}}>法式料理</option>
+          <option value="韓式料理" {{isSelected restaurant.category '韓式料理'}}>韓式料理</option>
+          <option value="中式料理" {{isSelected restaurant.category '中式料理'}}>中式料理</option>
+          <option value="港式料理" {{isSelected restaurant.category '港式料理'}}>港式料理</option>
+          <option value="主題餐廳" {{isSelected restaurant.category '主題餐廳'}}>主題餐廳</option>
+          <option value="酒吧" {{isSelected restaurant.category '酒吧'}}>酒吧</option>
+          <option value="咖啡" {{isSelected restaurant.category '咖啡'}}>咖啡</option>
+          <option value="其他" {{isSelected restaurant.category '其他'}}>其他</option>
         </select>
       </div>
       <div class="form-group col-md-4">

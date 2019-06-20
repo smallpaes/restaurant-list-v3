@@ -1,3 +1,8 @@
+<!-- banner title -->
+<div class="banner-title">
+  <h1 class="mb-1">My Restaurants</h1>
+</div>
+
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
@@ -19,35 +24,61 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-10 col-12 mx-auto">
-      <div class="card-columns">
-        {{#each restaurants}}
-        <a href="/restaurants/{{this.id}}" class="text-secondary">
-          <div class="card mb-3">
-            <img class="card-img-top"
+    {{#each restaurants}}
+    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+      <div class="card mb-3">
+        <a href="/restaurants/{{this.id}}" class="text-secondary card-link">
+          <div class="card-img-top">
+            <img class="w-100"
               src="{{#if this.image}}{{this.image}}{{else}}https://via.placeholder.com/550x367.jpg/d3d3d3?text=No+Image+Yet{{/if}}"
               alt="{{this.name}}">
-            <div class="card-body p-3">
-              <h6 class="card-title mb-1">{{this.name}}</h6>
-              <div class="restaurant-category mb-1">
-                <i class="fas fa-utensils pr-2"></i> {{this.category}}
-              </div>
-              <span class="badge badge-pill badge-danger font-weight-normal">
-                {{this.rating}}
-                <i class="fas fa-star fa-xs"></i>
-              </span>
+          </div>
+
+          <div class="card-body p-3">
+            <h6 class="card-title mb-1">{{this.name}}</h6>
+            <div class="restaurant-category mb-1">
+              <i class="fas fa-utensils pr-2"></i> {{this.category}}
             </div>
-            <div class="card-footer d-flex justify-content-between">
-              <a href="/restaurants/{{this.id}}/edit" class="btn btn-link btn-sm" role="button">Edit</a>
-              <a href="/restaurants/{{this.id}}/" class="btn btn-link btn-sm" role="button">Detail</a>
-              <form action="/restaurants/{{this.id}}/delete" method="POST" class="d-inline">
-                <button type="submit" class="btn btn-link btn-sm">Delete</button>
-              </form>
-            </div>
+            <span class="badge badge-pill badge-danger font-weight-normal">
+              {{this.rating}}
+              <i class="fas fa-star fa-xs"></i>
+            </span>
           </div>
         </a>
-        {{/each}}
+
+        <div class="card-footer d-flex justify-content-between">
+          <a href="/restaurants/{{this.id}}/edit" class="btn btn-sm" role="button">編輯</a>
+          <a href="/restaurants/{{this.id}}/" class="btn btn-sm" role="button">查看</a>
+          <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#s{{this.id}}">
+            刪除
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="s{{this.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">刪除餐廳</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  你確定要永久刪除這間餐廳嗎？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">返回</button>
+
+                  <form action="/restaurants/{{this.id}}/delete" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger text-white">確定刪除</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    {{/each}}
   </div>
 </div>

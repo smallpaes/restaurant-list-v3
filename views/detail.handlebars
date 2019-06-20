@@ -1,14 +1,18 @@
-<h1 class="mb-1 restaurant-show-title">{{restaurants.name}}</h1>
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-10 mx-auto">
+<!-- banner title -->
+<div class="banner-title">
+  <h1 class="mb-1">{{restaurant.name}}</h1>
+</div>
 
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 col-lg-6 mx-auto text-secondary d-flex flex-column justify-content-center">
+      <h2 class="text-dark font-weight-bolder mb-3">關於我們</h2>
       <p class="mb-1">
         <span class="text-secondary">
           <i class="fas fa-utensils pr-2"></i>
           類別：
         </span>
-        {{restaurants.category}}
+        {{restaurant.category}}
       </p>
 
       <p class="mb-1">
@@ -16,8 +20,8 @@
           <i class="fas fa-map-marker-alt pr-2"></i>
           地址：
         </span>
-        {{restaurants.location}}
-        <a href="{{restaurants.google_map}}" class="text-secondary" target="_blank">
+        {{restaurant.location}}
+        <a href="{{restaurant.google_map}}" class="text-secondary" target="_blank">
           <i class="fas fa-location-arrow pr-2 fa-xs"></i>
         </a>
       </p>
@@ -27,15 +31,24 @@
           <i class="fas fa-mobile-alt pr-2"></i>
           電話：
         </span>
-        {{restaurants.phone}}
+        {{restaurant.phone}}
       </p>
 
-      <p class="mb-5">
-        {{restaurants.description}}
+      <p class="mt-3">
+        {{restaurant.description}}
       </p>
 
-      <img class="rounded mx-auto d-block mb-4 w-100" src="{{restaurants.image}}" alt="{{restaurants.name}}"
-        style="max-width: 600px;">
+      <div class="d-flex mt-3 detail-btn">
+        <a class="btn btn-outline-info" href="/restaurants/{{restaurant.id}}/edit" role="button">編輯餐廳</a>
+        <form action="/restaurants/{{restaurant.id}}/delete" method="POST" class="d-inline">
+          <button type="submit" class="btn btn-outline-danger">刪除餐廳</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 mt-4 detail-img">
+      <img class="rounded mx-auto d-block mb-4 w-100 shadow-lg"
+        src="{{#if restaurant.image}}{{restaurant.image}}{{else}}https://via.placeholder.com/550x367.jpg/d3d3d3?text=No+Image+Yet{{/if}}"
+        alt="{{restaurant.name}}">
     </div>
   </div>
 </div>

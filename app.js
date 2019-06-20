@@ -3,6 +3,8 @@ const app = express()
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const handlebarHelpers = require('./handlebars-helpers')
+const validateNumber = require('./validate-data')
 
 const port = 3000
 
@@ -55,6 +57,12 @@ app.get('/restaurants/new', (req, res) => {
 // create one new restaurant
 app.post('/restaurants/new', (req, res) => {
   const { name, name_em, location, google_map, phone, category, rating, image } = req.body
+  const phoneValidateResult = validateNumber(phone)
+
+  if (!phoneValidateResult) {
+    return res.render('new', { restaurant: req.body, phoneInvalid: true, dataValid: true })
+  }
+
   // create new document
   const restaurant = new Restaurant({ name, name_em, location, google_map, phone, category, rating, image })
   // save new document
@@ -68,10 +76,7 @@ app.post('/restaurants/new', (req, res) => {
 app.get('/restaurants/:id/edit', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-    return res.render('edit', {
-      // Specify a helper for this rendering: add selected to selected category
-      restaurant, helpers: { [restaurant.category]() { return 'selected' } }
-    })
+    return res.render('edit', { restaurant })
   })
 })
 
@@ -127,12 +132,11 @@ app.get('/search', (req, res) => {
 
 // detail page
 app.get('/restaurants/:id', (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurants) => {
+  Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-    return res.render('detail', { restaurants })
+    return res.render('detail', { restaurant })
   })
 })
-
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
