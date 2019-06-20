@@ -1,0 +1,66 @@
+<div class="container my-5">
+  <form action="/restaurants/new" method="POST">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="name">餐廳中文名稱</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="麥克咖啡" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="eng-name">餐廳英文名稱</label>
+        <input type="text" class="form-control" id="eng-name" name="name_en" placeholder="Mike Cafe">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="location">餐廳地址</label>
+      <input type="text" class="form-control" id="location" name="location" placeholder="台北市大安區仁愛路一段一號" required>
+    </div>
+    <div class="form-group">
+      <label for="map-link">Google Map 連結</label>
+      <input type="text" class="form-control" id="map-link" name="google_map"
+        placeholder="https://goo.gl/maps/BJdmLuVdDbw">
+    </div>
+    <div class="form-group">
+      <label for="phone">電話號碼</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="02 2363 8009" required>
+    </div>
+    <div class="form-row mb-4">
+      <div class="form-group col-md-4">
+        <label for="category">餐廳類別</label>
+        <select id="category" name="category" class="form-control" required>
+          <option value="" selected>Choose...</option>
+          <option value="middle-east">中東料理</option>
+          <option value="japanese">日式料理</option>
+          <option value="italian">義式料理</option>
+          <option value="american">美式料理</option>
+          <option value="french">法式料理</option>
+          <option value="korean">韓式料理</option>
+          <option value="chinese">中式料理</option>
+          <option value="cantonese">港式料理</option>
+          <option value="theme">主題餐廳</option>
+          <option value="bar">酒吧</option>
+          <option value="cafe">咖啡廳</option>
+          <option value="others">其他</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="rating">整體評價</label>
+        <input type="number" class="form-control" id="rating" name="rating" min="0.0" max="5.0" step="0.1" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="image">照片連結</label>
+        <input type="text" class="form-control" id="image" name="image"
+          placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5634/08.jpg">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">送出表單</button>
+    <a class="btn btn-danger" href="/" role="button">放棄返回</a>
+  </form>
+</div>
+
+{{!-- 
+name / eng name
+location
+google map
+phone
+category / rating / image
+ --}}

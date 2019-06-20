@@ -44,6 +44,23 @@ app.get('/', (req, res) => {
   })
 })
 
+// page to create new restaurant
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
+// create one new restaurant
+app.post('/restaurants/new', (req, res) => {
+  const { name, name_em, location, google_map, phone, category, rating, image } = req.body
+  // create new document
+  const restaurant = new Restaurant({ name, name_em, location, google_map, phone, category, rating, image })
+  // save new document
+  restaurant.save(err => {
+    if (err) return console.error(err)
+    return res.redirect('/')
+  })
+})
+
 // detail page
 app.get('/restaurants/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurants) => {
@@ -51,6 +68,7 @@ app.get('/restaurants/:id', (req, res) => {
     return res.render('detail', { restaurants })
   })
 })
+
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
