@@ -101,8 +101,10 @@ app.post('/restaurants/:id', (req, res) => {
 app.post('/restaurants/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
+    // remove the restaurant from database
     restaurant.remove(err => {
       if (err) return console.error(err)
+      // redirect back to landing page
       return res.redirect('/')
     })
   })
