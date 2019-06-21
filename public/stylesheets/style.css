@@ -36,6 +36,14 @@
   color: #9b4b4b;
 }
 
+.keyword-search a {
+  color: #BD7676;
+}
+
+.keyword-search a:hover {
+  color: #AD5454;
+}
+
 .form-control::placeholder {
   color: #aaaaaa;
   font-size: 0.8rem;
@@ -133,14 +141,14 @@ label {
   color: #404040;
 }
 
-.form-control {
+.restaurant-form .form-control {
   border: none;
   border-radius: inherit;
   border-bottom: 1px solid #B8B8B8;
 }
 
-.form-control.is-valid:focus,
-.form-control.is-invalid:focus {
+.restaurant-form .form-control.is-valid:focus,
+.restaurant-form .form-control.is-invalid:focus {
   box-shadow: inherit;
 }
 

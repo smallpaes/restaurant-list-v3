@@ -59,9 +59,10 @@ app.post('/restaurants/new', (req, res) => {
 
   // validate each input of the form submitted
   const validateResult = validateForm(req.body)
+
   // get overall validation result of the form submitted
   const formIsInvalidate = Object.values(validateResult).includes(false)
-  console.log(validateResult)
+
   // ask user to update invalid input
   if (formIsInvalidate) {
     return res.render('new', { restaurant: req.body, validateResult })
@@ -129,7 +130,7 @@ app.post('/restaurants/:id/delete', (req, res) => {
 })
 
 // searching restaurant
-app.get('/search', (req, res) => {
+app.get('/restaurants/search', (req, res) => {
   // Escaping special character
   function replacer(match) { return `\\${match}` }
   const updatedInput = req.query.keyword.replace(/\W/g, replacer)
@@ -141,6 +142,13 @@ app.get('/search', (req, res) => {
   })
 })
 
+// searching restaurant by keyword
+app.get('/restaurants/search/:category', (req, res) => {
+  Restaurant.find({ category: req.params.category }, (err, restaurants) => {
+    if (err) return console.error(err)
+    return res.render('index', { restaurants, searchInput: req.params.category })
+  })
+})
 
 // detail page
 app.get('/restaurants/:id', (req, res) => {
