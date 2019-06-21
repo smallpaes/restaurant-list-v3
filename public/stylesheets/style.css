@@ -36,12 +36,8 @@
   color: #9b4b4b;
 }
 
-.keyword-search a {
+.fast-search li {
   color: #BD7676;
-}
-
-.keyword-search a:hover {
-  color: #AD5454;
 }
 
 .form-control::placeholder {

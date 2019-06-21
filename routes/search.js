@@ -22,10 +22,19 @@ router.get('/', (req, res) => {
 })
 
 // searching restaurant by keyword
-router.get('/:category', (req, res) => {
+router.get('/category/:category', (req, res) => {
   Restaurant.find({ category: req.params.category }, (err, restaurants) => {
     if (err) return console.error(err)
-    return res.render('index', { restaurants, searchInput: req.params.category })
+    let emptyData = restaurants.length === 0 ? true : false
+    return res.render('index', { restaurants, searchInput: req.params.category, emptyData })
+  })
+})
+
+router.get('/rating/:rating', (req, res) => {
+  Restaurant.find({ rating: { $gte: req.params.rating } }, (err, restaurants) => {
+    if (err) return console.error(err)
+    let emptyData = restaurants.length === 0 ? true : false
+    return res.render('index', { restaurants, emptyData })
   })
 })
 
