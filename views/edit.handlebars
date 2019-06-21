@@ -8,34 +8,61 @@
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="name">餐廳中文名稱</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="麥克咖啡" value="{{restaurant.name}}"
-          required>
+        <input type="text" class="form-control {{validate validateResult.name}}" id="name" name="name"
+          placeholder="麥克咖啡" value="{{restaurant.name}}">
+        <div class="valid-feedback">
+          準備好囉!
+        </div>
+        <div class="invalid-feedback">
+          名字必填喔！
+        </div>
       </div>
       <div class="form-group col-md-6">
         <label for="eng-name">餐廳英文名稱</label>
-        <input type="text" class="form-control" id="eng-name" name="name_en" value="{{restaurant.name_en}}"
-          placeholder="Mike Cafe">
+        <input type="text" class="form-control {{validate validateResult.name_en}}" id="eng-name" name="name_en"
+          value="{{restaurant.name_en}}" placeholder="Mike Cafe">
+        <div class="valid-feedback">
+          準備好囉!（非必填）
+        </div>
       </div>
     </div>
     <div class="form-group">
       <label for="location">餐廳地址</label>
-      <input type="text" class="form-control" id="location" name="location" value="{{restaurant.location}}"
-        placeholder="台北市大安區仁愛路一段一號" required>
+      <input type="text" class="form-control {{validate validateResult.location}}" id="location" name="location"
+        value="{{restaurant.location}}" placeholder="台北市大安區仁愛路一段一號">
+      <div class="valid-feedback">
+        準備好囉!
+      </div>
+      <div class="invalid-feedback">
+        地址必填喔！
+      </div>
     </div>
     <div class="form-group">
       <label for="map-link">Google Map 連結</label>
-      <input type="text" class="form-control" id="map-link" name="google_map" value="{{restaurant.google_map}}"
-        placeholder="https://goo.gl/maps/BJdmLuVdDbw">
+      <input type="text" class="form-control {{validate validateResult.google_map}}" id="map-link" name="google_map"
+        value="{{restaurant.google_map}}" placeholder="https://goo.gl/maps/BJdmLuVdDbw">
+      <div class="valid-feedback">
+        準備好囉!（非必填）
+      </div>
+      <div class="invalid-feedback">
+        輸入格式有誤，需要為 http:// 或 https:// 開頭的連結喔！
+      </div>
     </div>
     <div class="form-group">
       <label for="phone">電話號碼</label>
-      <input type="text" class="form-control" id="phone" name="phone" value="{{restaurant.phone}}"
-        placeholder="02 2363 8009" required>
+      <input type="text" class="form-control {{validate validateResult.phone}}" id="phone" name="phone"
+        value="{{restaurant.phone}}" placeholder="02 2363 8009">
+      <div class="valid-feedback">
+        準備好囉!
+      </div>
+      <div class="invalid-feedback">
+        輸入格式有誤，是不是忘了加空格或區碼了？範例：02 2222 2222
+      </div>
     </div>
     <div class="form-row mb-4">
       <div class="form-group col-md-4">
         <label for="category">餐廳類別</label>
-        <select id="category" name="category" class="form-control" required>
+        <select id="category" name="category" class="form-control {{validate validateResult.category}}">
           <option value="">Choose...</option>
           <option value="中東料理" {{isSelected restaurant.category '中東料理'}}>中東料理</option>
           <option value="日本料理" {{isSelected restaurant.category '日本料理'}}>日本料理</option>
@@ -50,27 +77,38 @@
           <option value="咖啡" {{isSelected restaurant.category '咖啡'}}>咖啡</option>
           <option value="其他" {{isSelected restaurant.category '其他'}}>其他</option>
         </select>
+        <div class="valid-feedback">
+          準備好囉!
+        </div>
+        <div class="invalid-feedback">
+          請選擇一種類型餐廳類型
+        </div>
       </div>
       <div class="form-group col-md-4">
         <label for="rating">整體評價</label>
-        <input type="number" class="form-control" id="rating" name="rating" step="0.1" value="{{restaurant.rating}}"
-          required>
+        <input type="number" class="form-control {{validate validateResult.rating}}" id="rating" name="rating"
+          step="0.1" value="{{restaurant.rating}}">
+        <div class="valid-feedback">
+          準備好囉!
+        </div>
+        <div class="invalid-feedback">
+          輸入格式有誤，最低評價： 0 / 最高評價：5
+        </div>
       </div>
       <div class="form-group col-md-4">
         <label for="image">照片連結</label>
-        <input type="text" class="form-control" id="image" name="image" value="{{restaurant.image}}"
+        <input type="text" class="form-control {{validate validateResult.image}}" id="image" name="image"
+          value="{{restaurant.image}}"
           placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5634/08.jpg">
+        <div class="valid-feedback">
+          準備好囉!（非必填）
+        </div>
+        <div class="invalid-feedback">
+          輸入格式有誤，需要為 http:// 或 https:// 開頭的連結喔！
+        </div>
       </div>
     </div>
     <button type="submit" class="btn btn-primary">送出表單</button>
     <a class="btn btn-danger" href="/" role="button">放棄返回</a>
   </form>
 </div>
-
-{{!-- 
-name / eng name
-location
-google map
-phone
-category / rating / image
- --}}

@@ -87,6 +87,18 @@ app.get('/restaurants/:id/edit', (req, res) => {
 
 // Submit edit
 app.post('/restaurants/:id', (req, res) => {
+
+  // validate each input of the form submitted
+  const validateResult = validateForm(req.body)
+  // get overall validation result of the form submitted
+  const formIsInvalidate = Object.values(validateResult).includes(false)
+
+  // ask user to update invalid input
+  if (formIsInvalidate) {
+    req.body.id = req.params.id
+    return res.render('edit', { restaurant: req.body, validateResult })
+  }
+
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     // update data
