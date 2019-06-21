@@ -51,87 +51,6 @@ app.get('/', (req, res) => {
 // Outsourced routes & filter only routes starting with /restaurants
 app.use('/restaurants', restaurantsRoutes)
 
-// page to create new restaurant
-// app.get('/restaurants/new', (req, res) => {
-//   res.render('new')
-// })
-
-// // create one new restaurant
-// app.post('/restaurants/new', (req, res) => {
-//   const { name, name_en, location, google_map, phone, category, rating, image, description } = req.body
-
-//   // validate each input of the form submitted
-//   const validateResult = validateForm(req.body)
-
-//   // get overall validation result of the form submitted
-//   const formIsInvalidate = Object.values(validateResult).includes(false)
-
-//   // ask user to update invalid input
-//   if (formIsInvalidate) {
-//     return res.render('new', { restaurant: req.body, validateResult })
-//   }
-
-//   // create new document
-//   const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image, description })
-
-//   // save new document
-//   restaurant.save(err => {
-//     if (err) return console.error(err)
-//     return res.redirect('/')
-//   })
-// })
-
-// // edit page
-// app.get('/restaurants/:id/edit', (req, res) => {
-//   Restaurant.findById(req.params.id, (err, restaurant) => {
-//     if (err) return console.error(err)
-//     return res.render('edit', { restaurant })
-//   })
-// })
-
-// // Submit edit
-// app.post('/restaurants/:id', (req, res) => {
-
-//   // validate each input of the form submitted
-//   const validateResult = validateForm(req.body)
-//   // get overall validation result of the form submitted
-//   const formIsInvalidate = Object.values(validateResult).includes(false)
-
-//   // ask user to update invalid input
-//   if (formIsInvalidate) {
-//     req.body.id = req.params.id
-//     return res.render('edit', { restaurant: req.body, validateResult })
-//   }
-
-//   Restaurant.findById(req.params.id, (err, restaurant) => {
-//     if (err) return console.error(err)
-//     // update data
-//     for (let property in req.body) {
-//       restaurant[property] = req.body[property]
-//     }
-
-//     // save data back to database
-//     restaurant.save(err => {
-//       if (err) return console.error(err)
-//       // redirect back to detail page
-//       return res.redirect(`/restaurants/${req.params.id}`)
-//     })
-//   })
-// })
-
-// // delete restaurant
-// app.post('/restaurants/:id/delete', (req, res) => {
-//   Restaurant.findById(req.params.id, (err, restaurant) => {
-//     if (err) return console.error(err)
-//     // remove the restaurant from database
-//     restaurant.remove(err => {
-//       if (err) return console.error(err)
-//       // redirect back to landing page 
-//       return res.redirect('/')
-//     })
-//   })
-// })
-
 // searching restaurant
 app.get('/search', (req, res) => {
   // Escaping special character
@@ -153,14 +72,6 @@ app.get('/search/:category', (req, res) => {
     return res.render('index', { restaurants, searchInput: req.params.category })
   })
 })
-
-// detail page
-// app.get('/restaurants/:id', (req, res) => {
-//   Restaurant.findById(req.params.id, (err, restaurant) => {
-//     if (err) return console.error(err)
-//     return res.render('detail', { restaurant })
-//   })
-// })
 
 // 404 error page
 app.use((req, res) => {
