@@ -7,7 +7,7 @@
   <form action="/restaurants/new" method="POST">
     <div class="form-row mb-3">
       <div class="form-group col-md-6">
-        <label for="name">餐廳中文名稱</label>
+        <label for="name">餐廳中文名稱<span class="ml-1 text-danger">*</span></label>
         <input type="text" class="form-control {{validate validateResult.name}}" id="name" name="name"
           placeholder="麥克咖啡" value="{{restaurant.name}}">
         <div class="valid-feedback">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="form-group mb-4">
-      <label for="location">餐廳地址</label>
+      <label for="location">餐廳地址<span class="ml-1 text-danger">*</span></label>
       <input type="text" class="form-control {{validate validateResult.location}}" id="location" name="location"
         value="{{restaurant.location}}" placeholder="台北市大安區仁愛路一段一號">
       <div class="valid-feedback">
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="form-group mb-4">
-      <label for="phone">電話號碼</label>
+      <label for="phone">電話號碼<span class="ml-1 text-danger">*</span></label>
       <input type="text" class="form-control {{validate validateResult.phone}}" id="phone" name="phone"
         value="{{restaurant.phone}}" placeholder="02 2363 8009">
       <div class="valid-feedback">
@@ -61,7 +61,7 @@
     </div>
     <div class="form-row mb-4">
       <div class="form-group col-md-4">
-        <label for="category">餐廳類別</label>
+        <label for="category">餐廳類別<span class="ml-1 text-danger">*</span></label>
         <select id="category" name="category" class="text-black-50 form-control {{validate validateResult.category}}">
           <option value="">Choose...</option>
           <option value="中東料理" {{isSelected restaurant.category '中東料理'}}>中東料理</option>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="form-group col-md-4">
-        <label for="rating">整體評價</label>
+        <label for="rating">整體評價<span class="ml-1 text-danger">*</span></label>
         <input type="number" class="form-control {{validate validateResult.rating}}" id="rating" name="rating"
           step="0.1" value="{{restaurant.rating}}">
         <div class="valid-feedback">

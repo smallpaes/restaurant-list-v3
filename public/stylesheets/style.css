@@ -139,6 +139,11 @@ label {
   border-bottom: 1px solid #B8B8B8;
 }
 
+.form-control.is-valid:focus,
+.form-control.is-invalid:focus {
+  box-shadow: inherit;
+}
+
 @media screen and (min-width: 576px) {
   
   .card-img-top{
