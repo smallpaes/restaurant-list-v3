@@ -138,7 +138,8 @@ app.get('/restaurants/search', (req, res) => {
   const regex = new RegExp(updatedInput, 'i')
   Restaurant.find({ $or: [{ name: regex }, { category: regex }] }, (err, restaurants) => {
     if (err) return console.error(err)
-    return res.render('index', { restaurants, searchInput: req.query.keyword })
+    let emptyData = restaurants.length === 0 ? true : false
+    return res.render('index', { restaurants, searchInput: req.query.keyword, emptyData })
   })
 })
 
