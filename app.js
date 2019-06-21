@@ -159,7 +159,7 @@ app.get('/restaurants/:id', (req, res) => {
   })
 })
 
-// error page
+// 404 error page
 app.use((req, res) => {
   res.status(404).render('404')
 })

@@ -40,15 +40,39 @@
 
       <div class="d-flex mt-3 detail-btn">
         <a class="btn btn-outline-info" href="/restaurants/{{restaurant.id}}/edit" role="button">編輯餐廳</a>
-        <form action="/restaurants/{{restaurant.id}}/delete" method="POST" class="d-inline">
-          <button type="submit" class="btn btn-outline-danger">刪除餐廳</button>
-        </form>
+        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#s{{restaurant.id}}">
+          刪除
+        </button>
       </div>
     </div>
     <div class="col-12 col-lg-6 mt-4 detail-img">
       <img class="rounded mx-auto d-block mb-4 w-100 shadow-lg"
         src="{{#if restaurant.image}}{{restaurant.image}}{{else}}https://via.placeholder.com/550x367.jpg/d3d3d3?text=No+Image+Yet{{/if}}"
         alt="{{restaurant.name}}">
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="s{{restaurant.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-secondary" id="exampleModalLabel">刪除餐廳</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-secondary">
+          你確定要永久刪除<span class="font-weight-bold">「{{restaurant.name}}」</span>這間餐廳嗎？
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary text-white" data-dismiss="modal">返回</button>
+
+          <form action="/restaurants/{{restaurant.id}}/delete" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger text-white">確定刪除</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
