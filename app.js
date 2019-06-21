@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebarHelpers = require('./handlebars-helpers')
-const validateNumber = require('./validate-data')
+const validateForm = require('./validate-data')
 
 const port = 3000
 
@@ -44,7 +44,6 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
-    console.log(restaurants)
     return res.render('index', { restaurants })
   })
 })
@@ -56,15 +55,21 @@ app.get('/restaurants/new', (req, res) => {
 
 // create one new restaurant
 app.post('/restaurants/new', (req, res) => {
-  const { name, name_em, location, google_map, phone, category, rating, image } = req.body
-  const phoneValidateResult = validateNumber(phone)
+  const { name, name_en, location, google_map, phone, category, rating, image } = req.body
 
-  if (!phoneValidateResult) {
-    return res.render('new', { restaurant: req.body, phoneInvalid: true, dataValid: true })
+  // validate each input of the form submitted
+  const validateResult = validateForm(req.body)
+  // get overall validation result of the form submitted
+  const formIsInvalidate = Object.values(validateResult).includes(false)
+
+  // ask user to update invalid input
+  if (formIsInvalidate) {
+    return res.render('new', { restaurant: req.body, validateResult })
   }
 
   // create new document
-  const restaurant = new Restaurant({ name, name_em, location, google_map, phone, category, rating, image })
+  const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image })
+
   // save new document
   restaurant.save(err => {
     if (err) return console.error(err)
@@ -83,7 +88,6 @@ app.get('/restaurants/:id/edit', (req, res) => {
 // Submit edit
 app.post('/restaurants/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
-    console.log(restaurant)
     if (err) return console.error(err)
     // update data
     restaurant.name = req.body.name
