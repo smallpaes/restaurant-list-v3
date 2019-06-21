@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebarHelpers = require('./handlebars-helpers')
 const restaurantsRoutes = require('./routes/restaurants')
+const searchRoutes = require('./routes/search')
 
 const port = 3000
 
@@ -51,27 +52,8 @@ app.get('/', (req, res) => {
 // Outsourced routes & filter only routes starting with /restaurants
 app.use('/restaurants', restaurantsRoutes)
 
-// searching restaurant
-app.get('/search', (req, res) => {
-  // Escaping special character
-  function replacer(match) { return `\\${match}` }
-  const updatedInput = req.query.keyword.replace(/\W/g, replacer)
-  // Define regular expression 
-  const regex = new RegExp(updatedInput, 'i')
-  Restaurant.find({ $or: [{ name: regex }, { category: regex }] }, (err, restaurants) => {
-    if (err) return console.error(err)
-    let emptyData = restaurants.length === 0 ? true : false
-    return res.render('index', { restaurants, searchInput: req.query.keyword, emptyData })
-  })
-})
-
-// searching restaurant by keyword
-app.get('/search/:category', (req, res) => {
-  Restaurant.find({ category: req.params.category }, (err, restaurants) => {
-    if (err) return console.error(err)
-    return res.render('index', { restaurants, searchInput: req.params.category })
-  })
-})
+// Outsources routes & filter only routes starting with /search
+app.use('/search', searchRoutes)
 
 // 404 error page
 app.use((req, res) => {
