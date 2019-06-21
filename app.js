@@ -55,20 +55,20 @@ app.get('/restaurants/new', (req, res) => {
 
 // create one new restaurant
 app.post('/restaurants/new', (req, res) => {
-  const { name, name_en, location, google_map, phone, category, rating, image } = req.body
+  const { name, name_en, location, google_map, phone, category, rating, image, description } = req.body
 
   // validate each input of the form submitted
   const validateResult = validateForm(req.body)
   // get overall validation result of the form submitted
   const formIsInvalidate = Object.values(validateResult).includes(false)
-
+  console.log(validateResult)
   // ask user to update invalid input
   if (formIsInvalidate) {
     return res.render('new', { restaurant: req.body, validateResult })
   }
 
   // create new document
-  const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image })
+  const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image, description })
 
   // save new document
   restaurant.save(err => {
@@ -102,14 +102,10 @@ app.post('/restaurants/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     // update data
-    restaurant.name = req.body.name
-    restaurant.name_en = req.body.name_en
-    restaurant.category = req.body.category
-    restaurant.image = req.body.image
-    restaurant.location = req.body.location
-    restaurant.phone = req.body.phone
-    restaurant.google_map = req.body.google_map
-    restaurant.rating = req.body.rating
+    for (let property in req.body) {
+      restaurant[property] = req.body[property]
+    }
+
     // save data back to database
     restaurant.save(err => {
       if (err) return console.error(err)

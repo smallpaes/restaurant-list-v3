@@ -1,4 +1,4 @@
-function validateForm({ name, name_en, location, google_map, phone, category, rating, image }) {
+function validateForm({ name, name_en, location, google_map, phone, category, rating, image, description }) {
   return {
     name: name.length > 0 ? true : false,
     name_en: name_en.length >= 0 ? true : false,
@@ -10,7 +10,8 @@ function validateForm({ name, name_en, location, google_map, phone, category, ra
     rating: rating === '' ? false
       : (rating >= 0 && rating <= 5) ? true : false,
     image: image.length === 0 ? true
-      : image.match(/https:\/\/|http:\/\//) ? true : false
+      : image.match(/https:\/\/|http:\/\//) ? true : false,
+    description: description.length >= 0 ? true : false
   }
 }
 
