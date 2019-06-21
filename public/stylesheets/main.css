@@ -1,0 +1,64 @@
+.navbar .navbar-brand {
+  color: #4592af;
+}
+
+.navbar .navbar-brand:hover {
+  color: #226089;
+}
+
+.banner {
+  position: relative;
+  z-index: -1;
+  margin: -5px;
+  height: 360px;
+  background: #dddddd center center url('https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(3px);
+}
+
+.banner-title {
+  margin-top: 56px;
+  height: 360px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.banner-title h1 {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 3rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+
+@media screen and (min-width: 768px) {
+
+  .banner-title h1 {
+    font-size: 3.5rem;
+  }
+
+}
+
+@media screen and (min-width: 960px) {
+
+  .banner-title h1 {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  
+  .banner-title h1 {
+    font-size: 4.5rem;
+  }
+}

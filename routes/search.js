@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   Restaurant.find({ $or: [{ name: regex }, { category: regex }] }, (err, restaurants) => {
     if (err) return console.error(err)
     let emptyData = restaurants.length === 0 ? true : false
-    return res.render('index', { restaurants, searchInput: req.query.keyword, emptyData })
+    return res.render('index', { restaurants, searchInput: req.query.keyword, emptyData, indexCSS: true })
   })
 })
 
@@ -26,7 +26,7 @@ router.get('/category/:category', (req, res) => {
   Restaurant.find({ category: req.params.category }, (err, restaurants) => {
     if (err) return console.error(err)
     let emptyData = restaurants.length === 0 ? true : false
-    return res.render('index', { restaurants, searchInput: req.params.category, emptyData })
+    return res.render('index', { restaurants, searchInput: req.params.category, emptyData, indexCSS: true })
   })
 })
 
@@ -34,7 +34,7 @@ router.get('/rating/:rating', (req, res) => {
   Restaurant.find({ rating: { $gte: req.params.rating } }, (err, restaurants) => {
     if (err) return console.error(err)
     let emptyData = restaurants.length === 0 ? true : false
-    return res.render('index', { restaurants, emptyData })
+    return res.render('index', { restaurants, emptyData, indexCSS: true })
   })
 })
 

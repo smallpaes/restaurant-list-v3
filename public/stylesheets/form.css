@@ -1,0 +1,14 @@
+label {
+  color: #404040;
+}
+
+.restaurant-form .form-control {
+  border: none;
+  border-radius: inherit;
+  border-bottom: 1px solid #B8B8B8;
+}
+
+.restaurant-form .form-control.is-valid:focus,
+.restaurant-form .form-control.is-invalid:focus {
+  box-shadow: inherit;
+}

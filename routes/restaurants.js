@@ -11,12 +11,11 @@ const validateForm = require('../validate-data')
 
 // page to create new restaurant
 router.get('/new', (req, res) => {
-  res.render('new')
+  res.render('new', { formCSS: true })
 })
 
 // create one new restaurant
 router.post('/new', (req, res) => {
-  const { name, name_en, location, google_map, phone, category, rating, image, description } = req.body
 
   // validate each input of the form submitted
   const validateResult = validateForm(req.body)
@@ -26,8 +25,10 @@ router.post('/new', (req, res) => {
 
   // ask user to update invalid input
   if (formIsInvalidate) {
-    return res.render('new', { restaurant: req.body, validateResult })
+    return res.render('new', { restaurant: req.body, validateResult, formCSS: true })
   }
+
+  const { name, name_en, location, google_map, phone, category, rating, image, description } = req.body
 
   // create new document
   const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image, description })
@@ -43,7 +44,7 @@ router.post('/new', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-    return res.render('edit', { restaurant })
+    return res.render('edit', { restaurant, formCSS: true })
   })
 })
 
@@ -58,7 +59,7 @@ router.post('/:id', (req, res) => {
   // ask user to update invalid input
   if (formIsInvalidate) {
     req.body.id = req.params.id
-    return res.render('edit', { restaurant: req.body, validateResult })
+    return res.render('edit', { restaurant: req.body, validateResult, formCSS: true })
   }
 
   Restaurant.findById(req.params.id, (err, restaurant) => {
@@ -94,7 +95,7 @@ router.post('/:id/delete', (req, res) => {
 router.get('/:id', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
-    return res.render('detail', { restaurant })
+    return res.render('detail', { restaurant, detailCSS: true })
   })
 })
 

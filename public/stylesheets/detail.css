@@ -1,0 +1,14 @@
+.detail-btn .btn {
+  border-radius: 0;
+  padding: 6px 35px;
+  margin-right: 8px;
+}
+
+.detail-img img {
+  opacity: .8;
+}
+
+.detail-img img:hover {
+  opacity: 1;
+  transition: all .2s linear;
+}

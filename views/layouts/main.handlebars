@@ -10,7 +10,16 @@
   <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stylesheets/css/all.css">
   <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/main.css">
+  {{#if indexCSS}}
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  {{/if}}
+  {{#if detailCSS}}
+  <link rel="stylesheet" href="/stylesheets/detail.css">
+  {{/if}}
+  {{#if formCSS}}
+  <link rel="stylesheet" href="/stylesheets/form.css">
+  {{/if}}
 </head>
 
 <body>

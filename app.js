@@ -45,7 +45,7 @@ app.use(express.static('public'))
 app.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
-    return res.render('index', { restaurants })
+    return res.render('index', { restaurants, indexCSS: true })
   })
 })
 
