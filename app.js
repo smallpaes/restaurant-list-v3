@@ -158,6 +158,11 @@ app.get('/restaurants/:id', (req, res) => {
   })
 })
 
+// error page
+app.use((req, res) => {
+  res.status(404).render('404')
+})
+
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
 })
