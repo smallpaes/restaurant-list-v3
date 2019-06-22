@@ -43,7 +43,7 @@ $ git clone https://github.com/smallpaes/restaurant-list.git
 1. Enter the project folder
 
 ```
-$ cd restaurant-list
+$ cd restaurant-list-CRUD
 ```
 
 2. Install npm packages
