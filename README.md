@@ -62,8 +62,8 @@ $ node restaurantSeeder.js
 4. Find the message for successful import
 
 ```
-db connected!
-restaurant seeds are created
+> db connected!
+> restaurant seeds are created
 ```
 
 5. Activate the server 
@@ -76,8 +76,8 @@ $ npm run dev
 6. Find the message for successful activation
 
 ```
-Express is listening on http://localhost:3000
-mongodb connected!
+> Express is listening on http://localhost:3000
+> mongodb connected!
 ```
 You may visit the application on browser with the URL: http://localhost:3000
 
