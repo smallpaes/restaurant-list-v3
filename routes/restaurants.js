@@ -49,7 +49,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // Submit edit
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
 
   // validate each input of the form submitted
   const validateResult = validateForm(req.body)
@@ -79,7 +79,7 @@ router.post('/:id', (req, res) => {
 })
 
 // delete restaurant
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     // remove the restaurant from database

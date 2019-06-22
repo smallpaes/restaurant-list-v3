@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const handlebarHelpers = require('./handlebars-helpers')
+const methodOverride = require('method-override')
+const homeRoutes = require('./routes/home')
 const restaurantsRoutes = require('./routes/restaurants')
 const searchRoutes = require('./routes/search')
 
@@ -38,16 +40,14 @@ const Restaurant = require('./models/restaurant')
 // express takes all request body and parse it into JS object
 app.use(bodyParser.urlencoded({ extended: true }))
 
+// use method-override
+app.use(methodOverride('_method'))
+
 // use built-in middleware static() to serve static files
 app.use(express.static('public'))
 
 // landing page
-app.get('/', (req, res) => {
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err)
-    return res.render('index', { restaurants, indexCSS: true })
-  })
-})
+app.use('/', homeRoutes)
 
 // Outsourced routes & filter only routes starting with /restaurants
 app.use('/restaurants', restaurantsRoutes)
