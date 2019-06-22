@@ -1,57 +1,60 @@
-<!-- banner title -->
-<div class="banner-title">
-  <h1 class="mb-1">My Restaurants</h1>
-</div>
+<!--Banner-->
+<div class="banner-content container">
+  <div class="row h-100 align-items-center">
+    <!-- banner title -->
+    <div class="col-0 col-lg-6 d-none d-lg-block">
+      <h1 class="mb-1">My Restaurants</h1>
+    </div>
+    <!-- search bar -->
+    <div class="col-12 col-lg-6">
+      <div class="container search-bar">
+        <div class="search-bar-outer">
+          <div class="search-bar-inner">
+            <form action="/search">
+              <h4 class="mb-2">尋找餐廳：</h4>
+              <div class="input-group">
+                <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類"
+                  aria-label="Restaurant Name..." value="{{searchInput}}" aria-describedby="search-button">
+                <div class="input-group-append">
+                  <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+              </div>
+              <ul class="nav fast-search">
+                <!--Keyword Search-->
+                <li class="nav-item">
+                  <small class="nav-link pl-0 pr-1 font-weight-bolder">主題：</small>
+                </li>
+                <li class="nav-item">
+                  <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/義式餐廳">義式餐廳</a></small>
+                </li>
+                <li class="nav-item">
+                  <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/咖啡">咖啡</a></small>
+                </li>
+                <li class="nav-item">
+                  <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/美式">美式</a></small>
+                </li>
 
-<!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{searchInput}}" aria-describedby="search-button">
-          <div class="input-group-append">
-            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+                <!--Review Search-->
+                <li class="ml-3 nav-item">
+                  <small class="nav-link pl-0 pr-1 font-weight-bolder">評分：</small>
+                </li>
+                <li class="nav-item">
+                  <small><a class="nav-link p-0 pr-2 pt-2" href="/search/rating/4">四星<i
+                        class="fas fa-long-arrow-alt-up"></i></a></small>
+                </li>
+                <li class="nav-item">
+                  <small><a class="nav-link p-0 pr-2 pt-2" href="/search/rating/3">三星<i
+                        class="fas fa-long-arrow-alt-up"></i></a></small>
+                </li>
+                <li class="nav-item">
+                  <small><a class="nav-link p-0 pr-2 pt-2" href="/search/rating/2">二星<i
+                        class="fas fa-long-arrow-alt-up"></i></a></small>
+                </li>
+              </ul>
+            </form>
           </div>
         </div>
-        <ul class="nav fast-search">
-          <!--Keyword Search-->
-          <li class="nav-item">
-            <small class="nav-link pl-0 pr-1 font-weight-bolder">主題：</small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/義式餐廳">義式餐廳</a></small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/中東料理">中東料理</a></small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/咖啡">咖啡</a></small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/category/美式">美式</a></small>
-          </li>
-
-          <!--Review Search-->
-          <li class="ml-3 nav-item">
-            <small class="nav-link pl-0 pr-1 font-weight-bolder">評分：</small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/rating/4">四星<i
-                  class="fas fa-long-arrow-alt-up"></i></a></small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/rating/3">三星<i
-                  class="fas fa-long-arrow-alt-up"></i></a></small>
-          </li>
-          <li class="nav-item">
-            <small><a class="nav-link p-0 pr-2 pt-2" href="/search/rating/2">二星<i
-                  class="fas fa-long-arrow-alt-up"></i></a></small>
-          </li>
-        </ul>
-      </form>
+      </div>
     </div>
   </div>
 </div>

@@ -1,11 +1,26 @@
+.banner-content {
+  margin-top: 56px;
+  height: 360px;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.banner-content h1 {
+  color: white;
+  font-size: 3rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
 .search-bar .search-bar-outer {
-  margin: 0 auto;
   max-width: 680px;
   background-color: #fce2cf;
   border-radius: 8px;
   padding: 20px 30px;
   border: 0;
-  margin-top: -60px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -83,6 +98,7 @@ a.card-link:hover .card-img-top img {
   .card-img-top{
     max-height: 158px;
   }
+  
 }
 
 @media screen and (min-width: 768px) {
@@ -99,12 +115,20 @@ a.card-link:hover .card-img-top img {
     max-height: 191px;
   }
 
+  .banner-content h1 {
+    font-size: 3.2rem;
+  }
+
 }
 
 @media screen and (min-width: 1200px) {
   
   .card-img-top{
     max-height: 168px;
+  }
+
+  .banner-content h1 {
+    font-size: 4.2rem;
   }
 
 }
