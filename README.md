@@ -1,4 +1,4 @@
-# Restaurant List
+# Restaurant List 🍣
 
 An awesome web application built with Node.js, Express, and MongoDB for you to readily manage your restaurant lists: Create, view, edit, delete, and search restaurant are as easy as pie 🥧
 
