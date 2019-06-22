@@ -12,10 +12,10 @@ An awesome web application built with Node.js, Express, and MongoDB for you to r
 | :--------------------: | ------------------------------------------------- | --------------------------- |
 | View all restaurants | 1. User can view name, category, and rating of all restaurants<br>2. User can get an error message when no restaurant to display | / |
 | View a restaurant detail | User can view restaurant name, category, address, description and image | /restaurants/:id |
-| Create a restaurant | 1. User can add a new restaurant by inputting related info<br>2. User can get a placeholder image when image URL is not provided | /restaurants/new |   
+| Create a restaurant | 1. User can add a new restaurant by inputting related info<br>2. User can get a placeholder image when image URL is not provided<br> 3. User can get a warning message  below respected column when submitting invalid info | /restaurants/new |   
 | Edit a restaurant | User can update detail info of a restaurant | /restaurants/:id/edit |
 | Delete a restaurant | 1. User can delete a restaurant and receive warning message<br>2. User can receive a warning message before actual delete | /restaurants//:id/delete |
-| Search restaurants by input | 1. User can search restaurants by inputting name or category | /search |
+| Search restaurants by input | User can search restaurants by inputting name or category | /search |
 | Search restaurants by rating | User can search restaurants by choosing a given rating | /search/rating/:rating |
 | Search restaurants by category | User can search restaurants by choosing a given category | /search/category/:category |
 | Page not found | User can get an error message when travelling to a page not existing | /:any_other_URL |
