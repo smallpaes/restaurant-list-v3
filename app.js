@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 const homeRoutes = require('./routes/home')
 const restaurantsRoutes = require('./routes/restaurants')
 const searchRoutes = require('./routes/search')
+const sortRoutes = require('./routes/sort')
 
 const port = 3000
 
@@ -52,8 +53,11 @@ app.use('/', homeRoutes)
 // Outsourced routes & filter only routes starting with /restaurants
 app.use('/restaurants', restaurantsRoutes)
 
-// Outsources routes & filter only routes starting with /search
+// Outsourced routes & filter only routes starting with /search
 app.use('/search', searchRoutes)
+
+// Outsourced routes & filter only routes starting with /sort
+app.use('/sort', sortRoutes)
 
 // 404 error page
 app.use((req, res) => {

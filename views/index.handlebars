@@ -59,6 +59,29 @@
   </div>
 </div>
 
+<!--Sort and filter nav-->
+<section class="sort-filter-panel py-2">
+  <div class="container">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          排列順序
+        </button>
+        <div class="dropdown-menu">
+          <form action="/sort" method="get">
+            <input type="submit" value="餐廳名字" name="sort" class="dropdown-item">
+            <input type="submit" value="餐廳評價" name="sort" class="dropdown-item">
+            <input type="submit" value="餐廳種類" name="sort" class="dropdown-item">
+          </form>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/">恢復預設</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">

@@ -47,6 +47,10 @@
   color: #BD7676;
 }
 
+.sort-filter-panel {
+  background: #9b4b4b;
+}
+
 .card {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
