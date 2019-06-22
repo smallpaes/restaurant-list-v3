@@ -3,13 +3,13 @@
 An awesome web application built with Node.js, Express, and MongoDB for you to readily manage your restaurant lists: Create, view, edit, delete, and search restaurant are as easy as pie 🥧
 
 ## Project First Look
-![Application Screen Shot in GIF](https://media.giphy.com/media/ReVgWA8iOYF6Zjbi6m/giphy.gif)
-
+![Application Screen Shot in GIF](https://thumbs.gfycat.com/RectangularFragrantDoe-size_restricted.gif)
+![Application Screen Shot in GIF](https://thumbs.gfycat.com/AcclaimedAjarKoala-size_restricted.gif)
 
 
 ## Features
 | Functions              | Detail                                            | URL                         |
-| ---------------------- | ------------------------------------------------- | --------------------------- |
+| :--------------------: | ------------------------------------------------- | --------------------------- |
 | View all restaurants | 1. User can view name, category, and rating of all restaurants<br>2. User can get an error message when no restaurant to display | / |
 | View a restaurant detail | User can view restaurant name, category, address, description and image | /restaurants/:id |
 | Create a restaurant | User can add a new restaurant by inputting related info | /restaurants/new |   
