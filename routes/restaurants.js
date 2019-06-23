@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 // Include Restaurant model
 const Restaurant = require('../models/restaurant')
 // Include validateForm function
-const validateForm = require('../validate-data')
+const { validateForm } = require('../data-process')
 
 // page to create new restaurant
 router.get('/new', (req, res) => {
