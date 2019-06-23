@@ -9,6 +9,7 @@ const homeRoutes = require('./routes/home')
 const restaurantsRoutes = require('./routes/restaurants')
 const searchRoutes = require('./routes/search')
 const sortRoutes = require('./routes/sort')
+const filterRoutes = require('./routes/filter')
 
 const port = 3000
 
@@ -58,6 +59,8 @@ app.use('/search', searchRoutes)
 
 // Outsourced routes & filter only routes starting with /sort
 app.use('/sort', sortRoutes)
+
+app.use('/filter', filterRoutes)
 
 // 404 error page
 app.use((req, res) => {

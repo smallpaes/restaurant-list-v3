@@ -61,8 +61,9 @@
 
 <!--Sort and filter nav-->
 <section class="sort-filter-panel py-2">
-  <div class="container">
-    <ul class="navbar-nav mr-auto">
+  <div class="container d-flex">
+    <!--Sorting-->
+    <ul class="navbar-nav mr-3">
       <li class="nav-item dropdown">
         <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -76,6 +77,29 @@
           </form>
       </li>
     </ul>
+    <!--Filter-->
+    <div class="dropdown">
+      <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        篩選餐廳
+      </button>
+      <div class="dropdown-menu">
+        <!--Rating-->
+        <form action="/filter" method="GET" class="px-4 py-3">
+          <p class="m-0 text-muted">餐廳評分</p>
+          {{#each rating}}
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="{{this}}" id="{{this}}-star" name="rating"
+              {{#contain ../ratingOptions this}}checked{{/contain}}>
+            <label class="form-check-label text-danger" for="{{this}}-star">
+              <small>{{#times this}}<i class="fas fa-star"></i>{{/times}}</small>
+            </label>
+          </div>
+          {{/each}}
+          <button type="submit" class="btn btn-sm btn-info">Submit</button>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 

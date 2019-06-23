@@ -5,7 +5,8 @@ const Restaurant = require('../models/restaurant')
 router.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
-    return res.render('index', { restaurants, indexCSS: true })
+    const rating = [4, 3, 2, 1]
+    return res.render('index', { restaurants, indexCSS: true, rating: rating, ratingOptions: [] })
   })
 })
 
