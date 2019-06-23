@@ -10,13 +10,16 @@ router.get('/', (req, res) => {
 
   /*Promise chaining: https://thecodebarbarian.com/how-find-works-in-mongoose*/
   Restaurant.find({})
+    //find all restaurants to count numbers of each rating range on filter panel
     .then(restaurants => {
       rating = getRatingCount(restaurants)
       return Restaurant.find(criteria)
     })
+    // then find restaurants with filter criteria to display
     .then(restaurants => {
       res.render('index', { indexCSS: true, rating, restaurants, ratingOptions })
     })
+    // send error message if any
     .catch(err => console.error(err))
 })
 
