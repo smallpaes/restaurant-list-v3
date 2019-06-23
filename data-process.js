@@ -31,5 +31,9 @@ module.exports = {
     return {
       $or: objects
     }
+  },
+  convertSortName: function (name) {
+    return name === '餐廳名字' ? "name"
+      : name === '餐廳評價' ? 'rating' : 'category'
   }
 }
