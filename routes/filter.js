@@ -17,7 +17,8 @@ router.get('/', (req, res) => {
     })
     // then find restaurants with filter criteria to display
     .then(restaurants => {
-      res.render('index', { indexCSS: true, rating, restaurants, ratingOptions })
+      const emptyData = restaurants.length === 0 ? true : false
+      res.render('index', { indexCSS: true, rating, emptyData, restaurants, ratingOptions })
     })
     // send error message if any
     .catch(err => console.error(err))

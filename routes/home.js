@@ -6,9 +6,10 @@ const { getRatingCount } = require('../data-process')
 router.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
+    const emptyData = restaurants.length === 0 ? true : false
     // Count document amount of each rating range on filter panel
     const rating = getRatingCount(restaurants)
-    return res.render('index', { restaurants, indexCSS: true, rating, ratingOptions: [] })
+    return res.render('index', { restaurants, emptyData, indexCSS: true, rating, ratingOptions: [] })
   })
 })
 

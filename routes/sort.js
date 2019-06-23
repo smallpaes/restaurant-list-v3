@@ -11,8 +11,9 @@ router.get('/', (req, res) => {
     .sort({ [sortBy]: 'desc' })
     .exec((err, restaurants) => {
       if (err) return console.error(err)
+      const emptyData = restaurants.length === 0 ? true : false
       const rating = getRatingCount(restaurants)
-      res.render('index', { restaurants, indexCSS: true, rating, ratingOptions: [] })
+      res.render('index', { restaurants, emptyData, indexCSS: true, rating, ratingOptions: [] })
     })
 })
 
@@ -22,15 +23,21 @@ router.get('/:ratingOptions', (req, res) => {
   const sortBy = convertSortName(req.query.sort)
   const ratingOptions = req.params.ratingOptions.split(',')
   const criteria = createCriteria(ratingOptions)
+  let rating = {}
 
-  Restaurant.find(criteria)
-    .sort({ [sortBy]: 'desc' })
-    .exec((err, restaurants) => {
-      if (err) return console.error(err)
-      // Count document amount of each rating range on filter panel
-      const rating = getRatingCount(restaurants)
-      res.render('index', { restaurants, indexCSS: true, rating, ratingOptions })
+  Restaurant.find({})
+    //find all restaurants to count document amount of each rating range on filter panel
+    .then(restaurants => {
+      rating = getRatingCount(restaurants)
+      return Restaurant.find(criteria).sort({ [sortBy]: 'desc' }).exec()
     })
+    // then find restaurants with filter criteria to display
+    .then(restaurants => {
+      const emptyData = restaurants.length === 0 ? true : false
+      res.render('index', { restaurants, emptyData, indexCSS: true, rating, ratingOptions })
+    })
+    // send error message if any
+    .catch(err => console.error(err))
 })
 
 module.exports = router

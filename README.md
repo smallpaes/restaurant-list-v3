@@ -1,10 +1,10 @@
-# Restaurant List 🍣
+# Restaurant List v.2 🍣
 
-An awesome web application built with Node.js, Express, and MongoDB for you to readily manage your restaurant lists: Create, view, edit, delete, and search restaurant are as easy as pie 🥧
+An awesome web application built with Node.js, Express, and MongoDB for you to readily manage your restaurant lists: Create, view, edit, delete, filter, sort, and search restaurant are as easy as pie 🥧
 
 ## Project First Look
-![Application Screen Shot in GIF](https://thumbs.gfycat.com/RectangularFragrantDoe-size_restricted.gif)
-![Application Screen Shot in GIF](https://thumbs.gfycat.com/AcclaimedAjarKoala-size_restricted.gif)
+![Application Screen Shot in GIF](https://thumbs.gfycat.com/DeepCorruptCuttlefish-size_restricted.gif)
+![Application Screen Shot in GIF](https://thumbs.gfycat.com/GreedyVacantJaeger-size_restricted.gif)
 
 
 ## Features
@@ -18,6 +18,9 @@ An awesome web application built with Node.js, Express, and MongoDB for you to r
 | Search restaurants by input | User can search restaurants by inputting name or category | /search |
 | Search restaurants by rating | User can search restaurants by choosing a given rating | /search/rating/:rating |
 | Search restaurants by category | User can search restaurants by choosing a given category | /search/category/:category |
+| Filter restaurants | 1. User can filter restaurant list based on rating range<br>2. User can see the amount of restaurants at each rating range on filter panel | /filter |
+| Sort all restaurants | User can sort restaurants list by name, rating, or category | /sort |
+| Sort filtered restaurants | User can sort filtered restaurants list by name, rating, or category | /sort/:ratingOptions |
 | Page not found | User can get an error message when travelling to a page not existing | /:any_other_URL |
 
 
@@ -35,7 +38,7 @@ The following instructions will get you a copy of the project and all the settin
 Clone this repository to your local machine
 
 ```
-$ git clone https://github.com/smallpaes/restaurant-list-CRUD.git
+$ git clone https://github.com/smallpaes/restaurant-list-CRUD-sort.git
 ```
 
 ### Setup
@@ -43,7 +46,7 @@ $ git clone https://github.com/smallpaes/restaurant-list-CRUD.git
 1. Enter the project folder
 
 ```
-$ cd restaurant-list-CRUD
+$ cd restaurant-list-CRUD-sort
 ```
 
 2. Install npm packages
