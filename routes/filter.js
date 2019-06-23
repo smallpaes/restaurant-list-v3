@@ -1,17 +1,23 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
-const { createCriteria } = require('../data-process')
+const { getRatingCount, createCriteria } = require('../data-process')
 
 router.get('/', (req, res) => {
-  const rating = [4, 3, 2, 1]
   const ratingOptions = (req.query.rating) ? [...req.query.rating] : []
   const criteria = createCriteria(ratingOptions)
+  let rating = {}
 
-  Restaurant.find(criteria, (err, restaurants) => {
-    if (err) return console.error(err)
-    res.render('index', { indexCSS: true, rating: rating, restaurants, ratingOptions })
-  })
+  /*Promise chaining: https://thecodebarbarian.com/how-find-works-in-mongoose*/
+  Restaurant.find({})
+    .then(restaurants => {
+      rating = getRatingCount(restaurants)
+      return Restaurant.find(criteria)
+    })
+    .then(restaurants => {
+      res.render('index', { indexCSS: true, rating, restaurants, ratingOptions })
+    })
+    .catch(err => console.error(err))
 })
 
 module.exports = router

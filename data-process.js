@@ -1,3 +1,7 @@
+function getCountNumber(list, rating) {
+  return list.filter(restaurant => restaurant.rating >= rating && restaurant.rating < rating + 1).length
+}
+
 module.exports = {
   validateForm: function ({ name, name_en, location, google_map, phone, category, rating, image, description }) {
     return {
@@ -35,5 +39,12 @@ module.exports = {
   convertSortName: function (name) {
     return name === '餐廳名字' ? "name"
       : name === '餐廳評價' ? 'rating' : 'category'
+  },
+  getRatingCount: function (restaurantList) {
+    const result = {}
+    for (let i = 1; i < 5; i++) {
+      result[i] = getCountNumber(restaurantList, i)
+    }
+    return result
   }
 }

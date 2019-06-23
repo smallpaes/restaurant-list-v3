@@ -1,12 +1,13 @@
 const express = require('express')
 const router = express.Router()
 const Restaurant = require('../models/restaurant')
+const { getRatingCount } = require('../data-process')
 
 router.get('/', (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.error(err)
-    const rating = [4, 3, 2, 1]
-    return res.render('index', { restaurants, indexCSS: true, rating: rating, ratingOptions: [] })
+    const rating = getRatingCount(restaurants)
+    return res.render('index', { restaurants, indexCSS: true, rating, ratingOptions: [] })
   })
 })
 
