@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
     .sort({ [sortBy]: 'asc' })
     .exec((err, restaurants) => {
       if (err) return console.error(err)
-      res.render('index', { restaurants, indexCSS: true })
+      const rating = [4, 3, 2, 1]
+      res.render('index', { restaurants, indexCSS: true, rating: rating, ratingOptions: [] })
     })
 })
 

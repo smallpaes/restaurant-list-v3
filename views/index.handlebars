@@ -67,36 +67,36 @@
       <li class="nav-item dropdown">
         <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          排列順序
+          <i class="fas fa-sort pr-1"></i>排列順序
         </button>
         <div class="dropdown-menu">
           <form action="/sort" method="get">
-            <input type="submit" value="餐廳名字" name="sort" class="dropdown-item">
-            <input type="submit" value="餐廳評價" name="sort" class="dropdown-item">
-            <input type="submit" value="餐廳種類" name="sort" class="dropdown-item">
+            <input type="submit" value="餐廳名字" name="sort" class="dropdown-item text-muted">
+            <input type="submit" value="餐廳評價" name="sort" class="dropdown-item text-muted">
+            <input type="submit" value="餐廳種類" name="sort" class="dropdown-item text-muted">
           </form>
       </li>
     </ul>
     <!--Filter-->
-    <div class="dropdown">
+    <div class="dropdown filter-panel">
       <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        篩選餐廳
+        <i class="fas fa-filter pr-1"></i>篩選餐廳
       </button>
       <div class="dropdown-menu">
         <!--Rating-->
-        <form action="/filter" method="GET" class="px-4 py-3">
+        <form action="/filter" method="GET" class="px-3 py-2">
           <p class="m-0 text-muted">餐廳評分</p>
           {{#each rating}}
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="{{this}}" id="{{this}}-star" name="rating"
               {{#contain ../ratingOptions this}}checked{{/contain}}>
-            <label class="form-check-label text-danger" for="{{this}}-star">
+            <label class="form-check-label" for="{{this}}-star">
               <small>{{#times this}}<i class="fas fa-star"></i>{{/times}}</small>
             </label>
           </div>
           {{/each}}
-          <button type="submit" class="btn btn-sm btn-info">Submit</button>
+          <button type="submit" class="btn btn-sm btn-info mt-2">送出條件</button>
         </form>
       </div>
     </div>

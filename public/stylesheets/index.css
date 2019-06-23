@@ -2,7 +2,6 @@
   margin-top: 56px;
   height: 360px;
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
@@ -47,8 +46,26 @@
   color: #BD7676;
 }
 
+.fast-search li a {
+  color: #4592af;
+}
+
+.fast-search li a:hover {
+  color: #2b7591;
+}
+
 .sort-filter-panel {
   background: #9b4b4b;
+}
+
+.filter-panel div.form-check i{
+  color: rgba(220,53,69, .8);
+}
+
+
+.filter-panel div.form-check:hover i{
+  color: rgba(220,53,69, 1);
+  text-shadow: 1px 1px 1px rgba(20,9,5,0.26);
 }
 
 .card {
@@ -113,7 +130,7 @@ a.card-link:hover .card-img-top img {
 
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 992px) {
   
   .card-img-top{
     max-height: 191px;
