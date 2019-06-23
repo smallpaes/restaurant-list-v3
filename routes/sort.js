@@ -27,6 +27,7 @@ router.get('/:ratingOptions', (req, res) => {
     .sort({ [sortBy]: 'desc' })
     .exec((err, restaurants) => {
       if (err) return console.error(err)
+      // Count document amount of each rating range on filter panel
       const rating = getRatingCount(restaurants)
       res.render('index', { restaurants, indexCSS: true, rating, ratingOptions })
     })
