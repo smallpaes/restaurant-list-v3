@@ -7,32 +7,14 @@ const mongoose = require('mongoose')
 // Include Restaurant Model
 const Restaurant = require('../models/restaurant')
 // Include customize modules
-const { getRatingCount, createCriteria, convertSortName } = require('../data-process')
+const { getRatingCount, getCriteria } = require('../data-process')
 
 // searching restaurant
 router.get('/', (req, res) => {
-  console.log(req.query)
-
-  // handle category fast search
-  const textInput = req.query.category ? req.query.category : req.query.keyword
-  const categoryCriteria = req.query.category ? { category: req.query.category } : {}
-
-  // Escaping special character
-  function replacer(match) { return `\\${match}` }
-  const updatedInput = textInput.replace(/\W/g, replacer)
-  // Define regular expression 
-  const regex = new RegExp(updatedInput, 'i')
-
-  // handle filter
-  const ratingOptions = req.query.selectAll ? ['1', '2', '3', '4']
-    : req.query.rating ? [...req.query.rating]
-      : []
-  const criteria = createCriteria(ratingOptions)
-
-  // handle sort 
-  const sortBy = req.query.sort ? convertSortName(req.query.sort) : 'rating'
-
   let rating = {}
+
+  // get criteria for data search
+  const { textInput, categoryCriteria, regex, filterCriteria, sortBy, ratingOptions } = getCriteria(req.query)
 
   Restaurant.find({ $or: [{ name: regex }, { category: regex }] })
     .then(restaurants => {
@@ -41,7 +23,7 @@ router.get('/', (req, res) => {
         $and: [
           { $or: [{ name: regex }, { category: regex }] },
           categoryCriteria,
-          criteria
+          filterCriteria
         ]
       }).sort({ [sortBy]: 'desc' })
     })
@@ -50,6 +32,5 @@ router.get('/', (req, res) => {
       res.render('index', { restaurants, textInput, emptyData, indexCSS: true, rating, ratingOptions })
     })
 })
-
 
 module.exports = router
