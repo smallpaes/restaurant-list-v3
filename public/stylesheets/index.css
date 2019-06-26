@@ -1,13 +1,17 @@
 .banner-content {
   margin-top: 56px;
-  height: 360px;
+  height: 407px; /*360px*/
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
 }
 
-.banner-content h1 {
+.banner-content .text-search {
+  height: 357px;
+}
+
+.banner-content .text-search h1 {
   color: white;
   font-size: 3rem;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
