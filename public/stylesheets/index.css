@@ -50,12 +50,12 @@
   color: #BD7676;
 }
 
-.fast-search li a {
-  color: #4592af;
+.fast-search li .btn:hover {
+  color: #2b7591;
 }
 
-.fast-search li a:hover {
-  color: #2b7591;
+.fast-search li input {
+  color: #4592af;
 }
 
 .sort-filter-panel {
@@ -140,7 +140,7 @@ a.card-link:hover .card-img-top img {
     max-height: 191px;
   }
 
-  .banner-content h1 {
+  .banner-content .text-search h1 {
     font-size: 3.2rem;
   }
 
@@ -152,7 +152,7 @@ a.card-link:hover .card-img-top img {
     max-height: 168px;
   }
 
-  .banner-content h1 {
+  .banner-content .text-search h1 {
     font-size: 4.2rem;
   }
 

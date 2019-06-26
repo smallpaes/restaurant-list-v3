@@ -27,13 +27,16 @@
                     <small class="nav-link pl-0 pr-1 font-weight-bolder">主題：</small>
                   </li>
                   <li class="nav-item">
-                    <input type="submit" value="義式餐廳" name="category" class="btn btn-sm text-primary">
+                    <input type="submit" value="義式餐廳" name="category" class="btn btn-sm h-100">
                   </li>
                   <li class="nav-item">
-                    <input type="submit" value="咖啡" name="category" class="btn btn-sm text-primary">
+                    <input type="submit" value="咖啡" name="category" class="btn btn-sm h-100">
                   </li>
                   <li class="nav-item">
-                    <input type="submit" value="美式" name="category" class="btn btn-sm text-primary">
+                    <input type="submit" value="美式" name="category" class="btn btn-sm h-100">
+                  </li>
+                  <li class="nav-item">
+                    <input type="submit" value="中東料理" name="category" class="btn btn-sm h-100">
                   </li>
                 </ul>
               </div>
@@ -42,50 +45,48 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <!--Sort and filter nav-->
-      <div class="sort-filter-panel py-2 sticky-top shadow flex-grow-1">
-        <div class="container d-flex">
-          <!--Sorting-->
-          <ul class="navbar-nav mr-3">
-            <li class="nav-item dropdown">
-              <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-sort pr-1"></i>排列順序
-              </button>
-              <div class="dropdown-menu">
-                <input type="submit" value="餐廳名字" name="sort" class="dropdown-item text-muted">
-                <input type="submit" value="餐廳評價" name="sort" class="dropdown-item text-muted">
-                <input type="submit" value="餐廳種類" name="sort" class="dropdown-item text-muted">
-            </li>
-          </ul>
-          <!--Filter-->
-          <div class="dropdown filter-panel">
+    <!--Sort and filter nav-->
+    <div class="sort-filter-panel py-2 sticky-top shadow flex-grow-1">
+      <div class="container d-flex">
+        <!--Sorting-->
+        <ul class="navbar-nav mr-3">
+          <li class="nav-item dropdown">
             <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-filter pr-1"></i>篩選餐廳
+              <i class="fas fa-sort pr-1"></i>排列順序
             </button>
-            <div class="dropdown-menu px-3">
-              <!--Rating-->
-              <p class="m-0 text-muted">餐廳評分</p>
-              {{#each rating}}
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="{{@key}}" id="{{@key}}-star" name="rating"
-                  {{#contain ../ratingOptions @key}}checked{{/contain}}>
-                <label class="form-check-label" for="{{@key}}-star">
-                  <small>
-                    {{#times @key}}<i class="fas fa-star"></i>{{/times}}
-                    <span class="pl-1 text-muted">({{this}})</span>
-                  </small>
-                </label>
-              </div>
-              {{/each}}
-              <div class="dropdown-divider"></div>
-              <div class="d-flex">
+            <div class="dropdown-menu">
+              <input type="submit" value="餐廳名字" name="sort" class="dropdown-item text-muted">
+              <input type="submit" value="餐廳評價" name="sort" class="dropdown-item text-muted">
+              <input type="submit" value="餐廳種類" name="sort" class="dropdown-item text-muted">
+          </li>
+        </ul>
+        <!--Filter-->
+        <div class="dropdown filter-panel">
+          <button type="button" class="btn btn-success btn-sm dropdown-toggle px-3" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-filter pr-1"></i>篩選餐廳
+          </button>
+          <div class="dropdown-menu px-3">
+            <!--Rating-->
+            <p class="m-0 text-muted">餐廳評分</p>
+            {{#each rating}}
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="{{@key}}" id="{{@key}}-star" name="rating"
+                {{#contain ../ratingOptions @key}}checked{{/contain}}>
+              <label class="form-check-label" for="{{@key}}-star">
+                <small>
+                  {{#times @key}}<i class="fas fa-star"></i>{{/times}}
+                  <span class="pl-1 text-muted">({{this}})</span>
+                </small>
+              </label>
+            </div>
+            {{/each}}
+            <div class="dropdown-divider"></div>
+            <div class="d-flex">
 
-                <button type="submit" class="btn btn-link btn-sm pl-0 text-secondary">送出</button>
-                <input type="submit" value="全選" name="selectAll" class="btn btn-link btn-sm px-0 text-secondary">
-              </div>
+              <button type="submit" class="btn btn-link btn-sm pl-0 text-secondary">送出</button>
+              <input type="submit" value="全選" name="selectAll" class="btn btn-link btn-sm px-0 text-secondary">
             </div>
           </div>
         </div>
