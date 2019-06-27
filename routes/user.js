@@ -2,15 +2,17 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const User = require('../models/user')
+const passport = require('passport')
 
 
 router.get('/login', (req, res) => {
   res.render('login', { userCSS: true })
 })
 
-router.post('/login', (req, res) => {
-  res.send('login')
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/users/login'
+}))
 
 router.get('/register', (req, res) => {
   res.render('register', { userCSS: true })

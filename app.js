@@ -9,6 +9,8 @@ const homeRoutes = require('./routes/home')
 const restaurantsRoutes = require('./routes/restaurants')
 const searchRoutes = require('./routes/search')
 const userRoutes = require('./routes/user')
+const session = require('express-session')
+const passport = require('passport')
 
 const port = 3000
 
@@ -38,6 +40,11 @@ db.once('open', () => {
 // include restaurant model
 const Restaurant = require('./models/restaurant')
 
+// use express-session
+app.use(session({
+  secret: 'nksnfoiehhrekwqnrlkje'
+}))
+
 // express takes all request body and parse it into JS object
 app.use(bodyParser.urlencoded({ extended: true }))
 
@@ -46,6 +53,20 @@ app.use(methodOverride('_method'))
 
 // use built-in middleware static() to serve static files
 app.use(express.static('public'))
+
+// Initialize passport
+app.use(passport.initialize())
+// used for persistent login sessions
+app.use(passport.session())
+
+// include strategy configuration
+require('./config/passport')(passport)
+
+// keep req.user in res.local that can be used in view
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
 
 // landing page
 app.use('/', homeRoutes)
