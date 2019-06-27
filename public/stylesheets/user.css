@@ -3,14 +3,14 @@
 }
 
 .login-container {
-  width: 800px;
+  max-width: 720px;
   margin: -220px auto 0 auto;
   background: white;
   border-radius: 20px;
 }
 
 .register-container {
-  width: 800px;
+  max-width: 720px;
   margin: -320px auto 0 auto;
   background: white;
   border-radius: 20px;
@@ -39,7 +39,7 @@
   color: #117a8b;
 }
 
-.col-right {
+div.col-right {
   border-radius: 0 20px 20px 0;
   background: url('https://images.pexels.com/photos/887827/pexels-photo-887827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   background-position: center;
@@ -56,7 +56,8 @@
   opacity: .2;
 }
 
-.col-right h3 {
+.col-right h3,
+.col-right h4 {
   text-shadow: 1px 1px 2px rgb(105,105,105);
 }
 
