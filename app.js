@@ -12,6 +12,7 @@ const userRoutes = require('./routes/user')
 const session = require('express-session')
 const passport = require('passport')
 const authRoutes = require('./routes/auths')
+const flash = require('connect-flash')
 // check if it's not in production mode, then ask dotenv to load env file
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
@@ -67,11 +68,18 @@ app.use(passport.session())
 // include strategy configuration
 require('./config/passport')(passport)
 
+// Use flash middleware: all requests will have a req.flash()
+app.use(flash())
+
 // keep req.user in res.local that can be used in view
 app.use((req, res, next) => {
   res.locals.user = req.user
   // check if already authenticated
   res.locals.isAuthenticated = req.isAuthenticated()
+  // add two flash key
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.fail_msg = req.flash('fail_msg')
   next()
 })
 

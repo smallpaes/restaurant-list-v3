@@ -9,15 +9,16 @@ module.exports = passport => {
   // Local Strategy
   passport.use(new LocalStrategy(
     // find credential in parameter named email instead of username(default)
-    { usernameField: 'email' },
-    (email, password, done) => {
+    // set passReqToCallback true to pass req as well
+    { usernameField: 'email', passReqToCallback: true },
+    (req, email, password, done) => {
       User.findOne({ email: email })
         .then(user => {
-          if (!user) { return done(null, false, { message: 'Incorrect username' }) }
+          if (!user) { return done(null, false, req.flash('fail_msg', 'Email 輸入錯誤')) }
           // check if user input matches the password in database
           bcrypt.compare(password, user.password, (err, isMatch) => {
             if (err) throw err
-            return isMatch ? done(null, user) : done(null, false, { message: "Incorrect password" })
+            return isMatch ? done(null, user) : done(null, false, req.flash('fail_msg', '密碼錯誤'))
           })
         })
         .catch(err => done(err))

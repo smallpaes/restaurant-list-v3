@@ -12,7 +12,8 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
+  failureFlash: true
 }))
 
 router.get('/register', (req, res) => {
@@ -20,12 +21,24 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password, rePassword } = req.body
+  // error message for flash
+  const errors = []
+
+  // not accepting empty input
+  if (!name || !email || !password || !rePassword) { errors.push({ message: '所有欄位都是必填' }) }
+  // password and confirm password must be the same
+  if (password !== rePassword) { errors.push({ message: '密碼錯誤' }) }
+
+  if (errors.length > 0) {
+    return res.render('register', { name, email, password, rePassword, errors, userCSS: true })
+  }
 
   User.findOne({ email: email })
     .then(user => {
       // if account already exist, redirect to log in page
-      if (user) { return res.render('login', { email, userCSS: true }) }
+      errors.push({ message: '此 Email 已經註冊過，請直接登入' })
+      if (user) { return res.render('login', { email, userCSS: true, errors }) }
       // otherwise, create new document
       const newUser = new User({ name, email, password })
       // encrypt password
@@ -48,6 +61,8 @@ router.post('/register', (req, res) => {
 router.get('/logout', (req, res) => {
   // clear up session
   req.logout()
+  // add flash message
+  req.flash('success_msg', '你已經成功登出')
   // redirect back to login page
   res.redirect('/users/login')
 })
