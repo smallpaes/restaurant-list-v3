@@ -65,7 +65,8 @@ require('./config/passport')(passport)
 // keep req.user in res.local that can be used in view
 app.use((req, res, next) => {
   res.locals.user = req.user
-  console.log(req.isAuthenticated())
+  // check if already authenticated
+  res.locals.isAuthenticated = req.isAuthenticated()
   next()
 })
 

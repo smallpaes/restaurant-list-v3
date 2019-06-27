@@ -35,8 +35,14 @@
             width="30" height="30" class="d-inline-block align-top" alt="我的餐廳清單">
           我的餐廳清單
         </a>
-        <a class="btn btn-outline-success" href="/restaurants/new" role="button"><i
-            class="fas fa-plus pr-2"></i>新增餐廳</a>
+        <div class="nav-buttons">
+          {{#if isAuthenticated}}
+          <a class="btn btn-outline-info" href="/restaurants/new" role="button"><i class="fas fa-plus pr-2"></i>新增餐廳</a>
+          <a href="/users/logout" class="btn btn-outline-danger" role="button">登出</a>
+          {{else}}
+          <a class="btn btn-outline-info" href="/users/login" role="button">登入</a>
+          {{/if}}
+        </div>
       </div>
     </nav>
     <div class="banner"></div>
