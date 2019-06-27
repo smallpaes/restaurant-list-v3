@@ -1,0 +1,42 @@
+.banner {
+  opacity: .5;
+}
+
+.login-container {
+  width: 800px;
+  margin: -200px auto 0 auto;
+  background: white;
+  border-radius: 20px;
+}
+
+.login-container .col-left .form-control:focus {
+  box-shadow: inherit;
+  background-color: inherit;
+  border-color: #B0B0B0;
+}
+
+.login-container .col-right {
+  border-radius: 0 20px 20px 0;
+  background: url('https://images.pexels.com/photos/887827/pexels-photo-887827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-position: center;
+  background-size: cover;
+}
+
+.login-container .col-right .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  opacity: .2;
+}
+
+.login-container .col-right h3 {
+  text-shadow: 1px 1px 2px rgba(150, 150, 150, 1);
+}
+
+.login-container .col-right a {
+  width: 85%;
+  margin: 0 auto;
+}
