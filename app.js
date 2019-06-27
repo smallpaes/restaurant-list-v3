@@ -11,6 +11,9 @@ const searchRoutes = require('./routes/search')
 const userRoutes = require('./routes/user')
 const session = require('express-session')
 const passport = require('passport')
+const authRoutes = require('./routes/auths')
+// check if it's not in production mode, then ask dotenv to load env file
+if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
 const port = 3000
 
@@ -77,6 +80,9 @@ app.use('/', homeRoutes)
 
 // Outsourced routes & filter only routes starting with /users
 app.use('/users', userRoutes)
+
+// Outsourced routes & filter only routes starting with /auth
+app.use('/auth', authRoutes)
 
 // Outsourced routes & filter only routes starting with /restaurants
 app.use('/restaurants', restaurantsRoutes)
