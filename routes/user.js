@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
+const User = require('../models/user')
 
 
 router.get('/login', (req, res) => {
@@ -16,7 +17,19 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  res.send('signup')
+  const { name, email, password, rePassword } = req.body
+  User.findOne({ email: email })
+    .then(user => {
+      // if account already exist, redirect to log in page
+      if (user) { return res.render('login', { email, userCSS: true }) }
+      // otherwise, save user info
+      const newUser = new User({ name, email, password })
+      newUser.save()
+        .then(user => {
+          return res.redirect('/')
+        })
+        .catch(err => console.log(err))
+    })
 })
 
 router.get('/logout', (req, res) => {
