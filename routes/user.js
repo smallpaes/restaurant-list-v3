@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose = require('mongoose')
 const User = require('../models/user')
 const passport = require('passport')
+const bcrypt = require('bcryptjs')
 
 
 router.get('/login', (req, res) => {
@@ -19,18 +20,28 @@ router.get('/register', (req, res) => {
 })
 
 router.post('/register', (req, res) => {
-  const { name, email, password, rePassword } = req.body
+  const { name, email, password } = req.body
+
   User.findOne({ email: email })
     .then(user => {
       // if account already exist, redirect to log in page
       if (user) { return res.render('login', { email, userCSS: true }) }
-      // otherwise, save user info
+      // otherwise, create new document
       const newUser = new User({ name, email, password })
-      newUser.save()
-        .then(user => {
-          return res.redirect('/')
+      // encrypt password
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err
+          // replace password with hashed one
+          newUser.password = hash
+          //save document to user collection
+          newUser.save()
+            .then(user => {
+              return res.redirect('/')
+            })
+            .catch(err => console.log(err))
         })
-        .catch(err => console.log(err))
+      })
     })
 })
 
