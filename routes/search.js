@@ -39,9 +39,6 @@ router.get('/', authenticated, (req, res) => {
       const emptyData = restaurants.length === 0 ? true : false
       res.render('index', { restaurants, textInput, emptyData, indexCSS: true, rating, ratingOptions })
     })
-
-
-
 })
 
 module.exports = router
