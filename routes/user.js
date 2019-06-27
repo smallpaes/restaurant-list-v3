@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 
 router.get('/login', (req, res) => {
-  res.render('login', { loginCSS: true })
+  res.render('login', { userCSS: true })
 })
 
 router.post('/login', (req, res) => {
@@ -12,7 +12,7 @@ router.post('/login', (req, res) => {
 })
 
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('register', { userCSS: true })
 })
 
 router.post('/register', (req, res) => {
