@@ -4,32 +4,32 @@ const Schema = mongoose.Schema
 const restaurantSchema = new Schema({
   name: {
     type: String,
-    requires: true
+    required: true
   },
   name_en: {
     type: String
   },
   category: {
     type: String,
-    requires: true
+    required: true
   },
   image: {
     type: String
   },
   location: {
     type: String,
-    requires: true
+    required: true
   },
   phone: {
     type: String,
-    requires: true
+    required: true
   },
   google_map: {
     type: String
   },
   rating: {
     type: Number,
-    requires: true
+    required: true
   },
   description: {
     type: String
