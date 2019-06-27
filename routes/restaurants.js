@@ -33,7 +33,7 @@ router.post('/new', authenticated, (req, res) => {
   const { name, name_en, location, google_map, phone, category, rating, image, description } = req.body
 
   // create new document
-  const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image, description })
+  const restaurant = new Restaurant({ name, name_en, location, google_map, phone, category, rating, image, description, userId: req.user._id })
 
   // save new document
   restaurant.save(err => {
@@ -44,7 +44,7 @@ router.post('/new', authenticated, (req, res) => {
 
 // edit page
 router.get('/:id/edit', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('edit', { restaurant, formCSS: true })
   })
@@ -64,7 +64,7 @@ router.put('/:id', authenticated, (req, res) => {
     return res.render('edit', { restaurant: req.body, validateResult, formCSS: true })
   }
 
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     // update data
     for (let property in req.body) {
@@ -82,7 +82,7 @@ router.put('/:id', authenticated, (req, res) => {
 
 // delete restaurant
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     // remove the restaurant from database
     restaurant.remove(err => {
@@ -95,7 +95,7 @@ router.delete('/:id/delete', authenticated, (req, res) => {
 
 // detail page
 router.get('/:id', authenticated, (req, res) => {
-  Restaurant.findById(req.params.id, (err, restaurant) => {
+  Restaurant.findOne({ _id: req.params.id, userId: req.user._id }, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('detail', { restaurant, detailCSS: true })
   })
