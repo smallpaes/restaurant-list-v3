@@ -8,14 +8,16 @@ const mongoose = require('mongoose')
 const Restaurant = require('../models/restaurant')
 // Include validateForm function
 const { validateForm } = require('../data-process')
+// Include authenticated function from auth
+const { authenticated } = require('../config/auth')
 
 // page to create new restaurant
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new', { formCSS: true })
 })
 
 // create one new restaurant
-router.post('/new', (req, res) => {
+router.post('/new', authenticated, (req, res) => {
 
   // validate each input of the form submitted
   const validateResult = validateForm(req.body)
@@ -41,7 +43,7 @@ router.post('/new', (req, res) => {
 })
 
 // edit page
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('edit', { restaurant, formCSS: true })
@@ -49,7 +51,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // Submit edit
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticated, (req, res) => {
 
   // validate each input of the form submitted
   const validateResult = validateForm(req.body)
@@ -79,7 +81,7 @@ router.put('/:id', (req, res) => {
 })
 
 // delete restaurant
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     // remove the restaurant from database
@@ -92,7 +94,7 @@ router.delete('/:id/delete', (req, res) => {
 })
 
 // detail page
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticated, (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err)
     return res.render('detail', { restaurant, detailCSS: true })

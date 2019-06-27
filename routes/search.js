@@ -8,9 +8,11 @@ const mongoose = require('mongoose')
 const Restaurant = require('../models/restaurant')
 // Include customize modules
 const { getRatingCount, getCriteria } = require('../data-process')
+// Include authenticated function from auth
+const { authenticated } = require('../config/auth')
 
 // searching restaurant
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   let rating = {}
 
   // get criteria for data search
