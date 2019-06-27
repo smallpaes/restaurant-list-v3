@@ -8,6 +8,7 @@ const methodOverride = require('method-override')
 const homeRoutes = require('./routes/home')
 const restaurantsRoutes = require('./routes/restaurants')
 const searchRoutes = require('./routes/search')
+const userRoutes = require('./routes/user')
 
 const port = 3000
 
@@ -48,6 +49,9 @@ app.use(express.static('public'))
 
 // landing page
 app.use('/', homeRoutes)
+
+// Outsourced routes & filter only routes starting with /users
+app.use('/users', userRoutes)
 
 // Outsourced routes & filter only routes starting with /restaurants
 app.use('/restaurants', restaurantsRoutes)
