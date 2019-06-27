@@ -5,29 +5,30 @@
         <div class="form-group text-center">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="70" height="70" class="d-inline-block align-top" alt="我的餐廳清單">
-          <h2 class="text-info mt-1">Sign Up</h2>
+          <h2 class="text-info mt-2">註冊食譜</h2>
         </div>
         {{> messages}}
         <div class="form-group">
-          <label for="name" class="text-secondary">Name</label>
+          <label for="name" class="text-secondary">名稱</label>
           <input type="text" name="name" id="name" class="form-control">
         </div>
         <div class="form-group">
-          <label for="email" class="text-secondary">Email</label>
+          <label for="email" class="text-secondary">Email 信箱</label>
           <input type="email" name="email" id="email" class="form-control">
         </div>
         <div class="form-group">
-          <label for="password" class="text-secondary">Password</label>
+          <label for="password" class="text-secondary">密碼</label>
           <input type="password" name="password" id="password" class="form-control">
         </div>
         <div class="form-group">
-          <label for="re-password" class="text-secondary">Confirm Password</label>
+          <label for="re-password" class="text-secondary">確認密碼</label>
           <input type="password" name="rePassword" id="re-password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-info btn-block">Sign Up</button>
+        <button type="submit" class="btn btn-info btn-block">註冊</button>
       </form>
-      <div class="text-center my-4">
-        <small class="text-muted">or login with</small>
+      <div class="text-center mt-5 mb-4 position-relative separate-line">
+        <hr>
+        <small class="text-muted">或嘗試一鍵登入</small>
       </div>
       <div class="login-partners-icons">
         <h4 class="text-center">
@@ -38,8 +39,8 @@
     </div>
     <div class="col-5 col-right d-flex flex-column justify-content-center p-5 position-relative">
       <div class="overlay"></div>
-      <h4 class="text-center position-relative text-white">Already a member?</h4>
-      <a href="/login" class="btn btn-info btn-block position-relative shadow-lg">Log In With Email</a>
+      <h3 class="text-center position-relative text-white">已經是食客了嗎?</h3>
+      <a href="/users/login" class="btn btn-info btn-block position-relative shadow-lg">立即登入</a>
     </div>
   </div>
 </div>

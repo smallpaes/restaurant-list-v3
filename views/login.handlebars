@@ -5,33 +5,34 @@
         <div class="form-group text-center">
           <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png"
             width="70" height="70" class="d-inline-block align-top" alt="我的餐廳清單">
-          <h2 class="text-info mt-1">Log In</h2>
+          <h2 class="text-info mt-2">登入食譜</h2>
         </div>
         {{> messages}}
         <div class="form-group">
-          <label for="email" class="text-secondary">Email</label>
+          <label for="email" class="text-secondary">Email 信箱</label>
           <input type="email" name="email" id="email" class="form-control">
         </div>
         <div class="form-group">
-          <label for="password" class="text-secondary">Password</label>
+          <label for="password" class="text-secondary">密碼</label>
           <input type="password" name="password" id="password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-info btn-block">Log in</button>
+        <button type="submit" class="btn btn-info btn-block">登入</button>
       </form>
-      <div class="text-center my-4">
-        <small class="text-muted">or login with</small>
+      <div class="text-center mt-5 mb-4 position-relative separate-line">
+        <hr>
+        <small class="text-muted">或嘗試一鍵登入</small>
       </div>
       <div class="login-partners-icons">
         <h4 class="text-center">
-          <a href="/auth/facebook"><i class="fab fa-facebook mr-1 text-info"></i></a>
-          <a href="/"><i class="fab fa-google text-info"></i></a>
+          <a href="/auth/facebook"><i class="fab fa-facebook mr-1"></i></a>
+          <a href="/"><i class="fab fa-google "></i></a>
         </h4>
       </div>
     </div>
     <div class="col-5 col-right d-flex flex-column justify-content-center p-5 position-relative">
       <div class="overlay"></div>
-      <h3 class="text-center position-relative text-white">Not a member?</h3>
-      <a href="/register" class="btn btn-info btn-block position-relative shadow-lg">Sign Up Now</a>
+      <h3 class="text-center position-relative text-white">還不是食客嗎?</h3>
+      <a href="/users/register" class="btn btn-info btn-block position-relative shadow-lg">立即註冊</a>
     </div>
   </div>
 </div>
