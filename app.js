@@ -22,7 +22,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
 // set up mongoose connection to MongoDB
-mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1/restaurant', { useNewUrlParser: true, useCreateIndex: true })
 
 // retrieve responded "connection" object after successful execution
 const db = mongoose.connection
@@ -42,7 +42,9 @@ const Restaurant = require('./models/restaurant')
 
 // use express-session
 app.use(session({
-  secret: 'nksnfoiehhrekwqnrlkje'
+  secret: 'nksnfoiehhrekwqnrlkje',
+  resave: 'false',
+  saveUninitialized: 'false'
 }))
 
 // express takes all request body and parse it into JS object
