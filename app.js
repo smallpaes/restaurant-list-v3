@@ -76,10 +76,12 @@ app.use((req, res, next) => {
   res.locals.user = req.user
   // check if already authenticated
   res.locals.isAuthenticated = req.isAuthenticated()
-  // add two flash key
+  // add flash keys
   res.locals.success_msg = req.flash('success_msg')
   res.locals.warning_msg = req.flash('warning_msg')
   res.locals.fail_msg = req.flash('fail_msg')
+  // keep the name for view to show
+  res.locals.userName = req.user ? req.user.name : '我'
   next()
 })
 
