@@ -18,12 +18,18 @@ router.get('/', authenticated, (req, res) => {
   // get criteria for data search
   const { textInput, categoryCriteria, regex, filterCriteria, sortBy, ratingOptions } = getCriteria(req.query)
 
-  Restaurant.find({ $or: [{ name: regex }, { category: regex }] })
+  Restaurant.find({
+    $and: [
+      { $or: [{ name: regex }, { category: regex }] },
+      { userId: req.user._id }
+    ]
+  })
     .then(restaurants => {
       rating = getRatingCount(restaurants)
       return Restaurant.find({
         $and: [
           { $or: [{ name: regex }, { category: regex }] },
+          { userId: req.user._id },
           categoryCriteria,
           filterCriteria
         ]
@@ -33,6 +39,9 @@ router.get('/', authenticated, (req, res) => {
       const emptyData = restaurants.length === 0 ? true : false
       res.render('index', { restaurants, textInput, emptyData, indexCSS: true, rating, ratingOptions })
     })
+
+
+
 })
 
 module.exports = router
