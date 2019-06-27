@@ -35,7 +35,10 @@ router.post('/register', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  res.send('logout')
+  // clear up session
+  req.logout()
+  // redirect back to login page
+  res.redirect('/users/login')
 })
 
 module.exports = router
