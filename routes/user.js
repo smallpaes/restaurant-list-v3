@@ -26,10 +26,10 @@ router.post('/register', (req, res) => {
   const errors = []
 
   // not accepting empty input
-  if (!name || !email || !password || !rePassword) { errors.push({ message: '所有欄位都是必填' }) }
+  if (!email || !password || !rePassword) { errors.push({ message: '電子信箱和密碼是必填喔' }) }
   // password and confirm password must be the same
   if (password !== rePassword) { errors.push({ message: '密碼錯誤' }) }
-
+  // show signup page again with inputted data when invalid 
   if (errors.length > 0) {
     return res.render('register', { name, email, password, rePassword, errors, userCSS: true })
   }
@@ -37,10 +37,10 @@ router.post('/register', (req, res) => {
   User.findOne({ email: email })
     .then(user => {
       // if account already exist, redirect to log in page
-      errors.push({ message: '此 Email 已經註冊過，請直接登入' })
+      errors.push({ message: 'Email 已經註冊過，請直接登入' })
       if (user) { return res.render('login', { email, userCSS: true, errors }) }
       // otherwise, create new document
-      const newUser = new User({ name, email, password })
+      const newUser = new User({ name: name || '食客', email, password })
       // encrypt password
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
