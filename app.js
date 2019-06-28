@@ -13,6 +13,7 @@ const session = require('express-session')
 const passport = require('passport')
 const authRoutes = require('./routes/auths')
 const flash = require('connect-flash')
+const errorController = require('./controllers/error')
 // check if it's not in production mode, then ask dotenv to load env file
 if (process.env.NODE_ENV !== 'production') { require('dotenv').config() }
 
@@ -101,9 +102,7 @@ app.use('/restaurants', restaurantsRoutes)
 app.use('/search', searchRoutes)
 
 // 404 error page
-app.use((req, res) => {
-  res.status(404).render('404')
-})
+app.use(errorController)
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
