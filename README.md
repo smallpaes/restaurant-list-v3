@@ -13,7 +13,7 @@ An awesome web application built with Node.js, Express, and MongoDB for you to r
 | Log in with Google account | User can log in via Google with a Google account | /auth/google |
 | Log out | User can log out of an account | /users/logout |
 | View all restaurants | 1. User can view name, category, and rating of all restaurants after login<br>2. User can get an error message when no restaurant to display after login | / |
-| View a restaurant detail | User can view restaurant name, category, address, description and image after login | /restaurants/:id |
+| View a restaurant detail | 1. User can view restaurant name, category, address, description and image after login<br>2. User can see his or her name on the logo, "食客" will be displayed if name is not provided | /restaurants/:id |
 | Create a restaurant | 1. User can add a new restaurant by inputting related info after login<br>2. User can get a placeholder image when image URL is not provided<br> 3. User can get a warning message below corresponded column when submitting invalid info | /restaurants/new |   
 | Edit a restaurant | User can update detail info of a restaurant after login | /restaurants/:id/edit |
 | Delete a restaurant | 1. User can delete a restaurant after login<br>2. User can receive a warning message before actual delete | /restaurants/:id/delete |
