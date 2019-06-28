@@ -43,40 +43,44 @@ $ git clone https://github.com/smallpaes/restaurant-list-v3.git
 
 ### Setup
 
-1. Enter the project folder
+1. Create a new App at [https://developers.facebook.com/](https://developers.facebook.com/)
+
+2. Create a new project at [https://console.developers.google.com/](https://console.developers.google.com/)
+
+3. Enter the project folder
 
 ```
 $ cd restaurant-list-v3
 ```
 
-2. Install npm packages
+4. Install npm packages
 
 ```
 $ npm install
 ```
 
-3. Import user and restaurant seeds
+5. Import user and restaurant seeds
 
 ```
 $ cd models/seeds
 $ node seeder.js
 ```
 
-4. Find the message for successful import
+6. Find the message for successful import
 
 ```
 > db connected!
 > restaurant seeds are created
 ```
 
-5. Activate the server 
+7. Activate the server 
 
 ```
 $ cd ../../
 $ npm run dev
 ```
 
-6. Find the message for successful activation
+8. Find the message for successful activation
 
 ```
 > Express is listening on http://localhost:3000
