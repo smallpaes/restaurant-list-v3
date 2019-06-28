@@ -61,7 +61,42 @@ div.col-right {
   text-shadow: 1px 1px 2px rgb(105,105,105);
 }
 
-.col-right a {
-  width: 85%;
+.animation-info-btn {
+  width: 200px;
+  border: 2px solid #17a2b8;
+  background: linear-gradient(to right, white 50%, #17a2b8 50%);
+  
+}
+
+.animation-info-btn:hover {
+  color: #17a2b8;
+}
+
+.animation-danger-btn {
+  width: 100%;
+  border: 2px solid #dc3545;
+  background: linear-gradient(to right, white 50%, #dc3545 50%);
+
+}
+
+.animation-danger-btn:hover {
+  color: #dc3545;
+}
+
+.animation-btn {
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  background-size: 200% 100%;
+  background-position: right top;
+  padding: 5px 0;
+  text-decoration: none;
   margin: 0 auto;
+  transition: all .3s ease-out;
+}
+
+.animation-btn:hover {
+  background-position: left bottom;
+  font-weight: bold;
+  text-decoration: none;
 }
