@@ -37,8 +37,7 @@ router.post('/register', (req, res) => {
   User.findOne({ email: email })
     .then(user => {
       // if account already exist, redirect to log in page
-      errors.push({ message: 'Email 已經註冊過，請直接登入' })
-      if (user) { return res.render('login', { email, userCSS: true, errors }) }
+      if (user) { return res.render('login', { email, userCSS: true, errors: [{ message: 'Email 已經註冊過，請直接登入' }] }) }
       // otherwise, create new document
       const newUser = new User({ name: name || '食客', email, password })
       // encrypt password
