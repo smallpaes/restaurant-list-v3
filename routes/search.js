@@ -36,7 +36,7 @@ router.get('/', authenticated, (req, res) => {
       }).sort({ [sortBy]: 'desc' })
     })
     .then(restaurants => {
-      const emptyData = restaurants.length === 0 ? true : false
+      const emptyData = restaurants.length === 0
       res.render('index', { restaurants, textInput, emptyData, indexCSS: true, rating, ratingOptions })
     })
 })

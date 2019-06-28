@@ -7,7 +7,7 @@ const { authenticated } = require('../config/auth')
 router.get('/', authenticated, (req, res) => {
   Restaurant.find({ userId: req.user._id }, (err, restaurants) => {
     if (err) return console.error(err)
-    const emptyData = restaurants.length === 0 ? true : false
+    const emptyData = restaurants.length === 0
     // Count document amount of each rating range on filter panel
     const rating = getRatingCount(restaurants)
     return res.render('index', { restaurants, emptyData, indexCSS: true, rating, ratingOptions: [] })
