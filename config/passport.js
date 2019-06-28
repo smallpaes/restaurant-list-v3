@@ -31,9 +31,10 @@ module.exports = passport => {
     clientID: process.env.FACEBOOK_ID,
     clientSecret: process.env.FACEBOOK_SECRET,
     callbackURL: process.env.FACEBOOK_CALLBACK,
-    profileFields: ['displayName', 'email']
+    profileFields: ['displayName', 'email'],
+    passReqToCallback: true
   },
-    (accessToken, refreshToken, profile, done) => {
+    (req, accessToken, refreshToken, profile, done) => {
       User.findOne({ email: profile._json.email })
         .then(user => {
           // existing user
@@ -57,6 +58,7 @@ module.exports = passport => {
             })
           })
         })
+        .catch(err => done(err, false, req.flash('fail_msg', 'Facebook 驗證失敗')))
     }
   ))
 
@@ -64,9 +66,10 @@ module.exports = passport => {
   passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_ID,
     clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: process.env.GOOGLE_CALLBACK
+    callbackURL: process.env.GOOGLE_CALLBACK,
+    passReqToCallback: true
   },
-    (accessToken, refreshToken, profile, done) => {
+    (req, accessToken, refreshToken, profile, done) => {
       User.findOne({ email: profile._json.email })
         .then(user => {
           // existing user
@@ -89,6 +92,7 @@ module.exports = passport => {
             })
           })
         })
+        .catch(err => done(err, false, req.flash('fail_msg', 'Google 驗證失敗')))
     }
   ))
 
