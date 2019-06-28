@@ -46,7 +46,7 @@ $ git clone https://github.com/smallpaes/restaurant-list-v3.git
 1. Enter the project folder
 
 ```
-$ cd restaurant-list-CRUD-sort
+$ cd restaurant-list-v3
 ```
 
 2. Install npm packages
