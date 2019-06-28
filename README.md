@@ -38,7 +38,7 @@ The following instructions will get you a copy of the project and all the settin
 Clone this repository to your local machine
 
 ```
-$ git clone https://github.com/smallpaes/restaurant-list-CRUD-sort.git
+$ git clone https://github.com/smallpaes/restaurant-list-v3.git
 ```
 
 ### Setup
