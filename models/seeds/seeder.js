@@ -48,6 +48,7 @@ db.once('open', () => {
       })
     })
   })
+  console.log('restaurant and user seeds are created')
 })
 
 
