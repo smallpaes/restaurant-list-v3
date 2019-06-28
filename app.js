@@ -81,7 +81,7 @@ app.use((req, res, next) => {
   res.locals.warning_msg = req.flash('warning_msg')
   res.locals.fail_msg = req.flash('fail_msg')
   // keep the name for view to show
-  res.locals.userName = req.user ? req.user.name : '我'
+  res.locals.userName = req.user ? req.user.name : '食客'
   next()
 })
 
