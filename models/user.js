@@ -3,7 +3,8 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   name: {
-    type: String
+    type: String,
+    default: "食客"
   },
   email: {
     type: String,
