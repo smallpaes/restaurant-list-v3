@@ -59,28 +59,45 @@ $ cd restaurant-list-v3
 $ npm install
 ```
 
-5. Import user and restaurant seeds
+5. Create .env file
+
+```
+$ touch .env
+```
+
+6. Store API Key in .env file and save
+
+```
+GOOGLE_ID=<YOUR_GOOGLE_APP_ID>
+GOOGLE_SECRET=<YOUR_GOOGLE_APP_SECRET>
+GOOGLE_CALLBACK=<YOUR_GOOGLE_REDIRECT_URI>
+FACEBOOK_ID=<YOUR_FACEBOOK_APP_ID>
+FACEBOOK_SECRET=<YOUR_FACEBOOK_APP_SECRET>
+FACEBOOK_CALLBACK=<YOUR_FACEBOOK_REDIRECT_URI>
+```
+
+7. Import user and restaurant seeds
 
 ```
 $ cd models/seeds
 $ node seeder.js
 ```
 
-6. Find the message for successful import
+8. Find the message for successful import
 
 ```
 > db connected!
 > restaurant seeds are created
 ```
 
-7. Activate the server 
+9. Activate the server 
 
 ```
 $ cd ../../
 $ npm run dev
 ```
 
-8. Find the message for successful activation
+10. Find the message for successful activation
 
 ```
 > Express is listening on http://localhost:3000
