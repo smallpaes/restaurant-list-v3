@@ -19,6 +19,7 @@ An awesome web application built with Node.js, Express, and MongoDB for you to r
 | Delete a restaurant | 1. User can delete a restaurant after login<br>2. User can receive a warning message before actual delete | /restaurants/:id/delete |
 | Search restaurants by input | User can search restaurants by inputting name or category after login | /search |
 | Search restaurants by category | User can search restaurants by choosing a given category after login | /search |
+| Pagination | User can see at most six restaurants on a page and travel among pages | /search |
 | Filter restaurants | 1. User can filter restaurant list based on rating range after login<br>2. User can see the amount of restaurants at each rating range on filter panel based on given search input after login | /search|
 | Sort all restaurants | User can sort restaurants list by name, rating, or category based on given search input after login | /search |
 | Page not found | User can get an error message when travelling to a page not existing | /:any_other_URL |
