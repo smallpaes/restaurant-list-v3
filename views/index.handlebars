@@ -166,3 +166,26 @@
       class="pr-2 fas fa-plus"></i>Add Restaurant Now</a>
 </div>
 {{/if}}
+
+<!--Pagination-->
+<nav aria-label="Pagination" class="mt-4">
+  <ul class="pagination d-flex justify-content-center">
+    {{#if hasLastPage}}
+    <li class="page-item">
+      <a href="/search?keyword={{textInput}}&sort={{sort}}&{{ratingOptionsQuery}}&page={{lastPage}}" class="page-link"
+        aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {{/if}}
+    {{{createPageNumber totalPage currentPage textInput sort ratingOptionsQuery}}}
+    {{#if hasNextPage}}
+    <li class="page-item">
+      <a class="page-link" href="/search?keyword={{textInput}}&sort={{sort}}&{{ratingOptionsQuery}}&page={{nextPage}}"
+        aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {{/if}}
+  </ul>
+</nav>
